@@ -170,12 +170,11 @@
           <button type="button" class="profile-tab">Certificates</button>
           <button type="button" class="profile-tab">Submissions</button>
           <button type="button" class="profile-tab">Assets</button>
-          <button type="button" class="profile-tab">Documents</button>
-          <button type="button" class="profile-tab">Affiliations</button>
+          <button type="button" class="profile-tab active">Affiliations</button>
           <button type="button" class="profile-tab">Invoices</button>
           <button type="button" class="profile-tab">Inspections</button>
           <button type="button" class="profile-tab">Files</button>
-          <button type="button" class="profile-tab active">Correspondence</button>
+          <button type="button" class="profile-tab">Correspondence</button>
         </div>
 
         <div class="profile-tab-content">
@@ -771,8 +770,62 @@
           </div>
           <!-- End Files Tab -->
 
+          <!-- Affiliations Tab Content -->
+          <div id="affiliations-tab" class="tab-panel active">
+            <div class="usa-accordion usa-accordion--bordered margin-top-2">
+              <h3 class="usa-accordion__heading">
+                <button type="button" class="usa-accordion__button" aria-expanded="true" aria-controls="affiliations-icon-key">
+                  Icon Key
+                </button>
+              </h3>
+              <div id="affiliations-icon-key" class="usa-accordion__content usa-prose">
+                <p class="text-bold margin-0 margin-bottom-2">Options and Control Types</p>
+                <div class="icon-key-grid">
+                  <div class="icon-key-item">
+                    <img src="assets/download-certificate.png" alt="" width="24" height="24">
+                    <span>- Download Certificate</span>
+                  </div>
+                  <div class="icon-key-item">
+                    <img src="assets/icon-delete.png" alt="" width="24" height="24">
+                    <span>- Remove Affiliation</span>
+                  </div>
+                  <div class="icon-key-item">
+                    <img src="assets/view-submission.png" alt="" width="24" height="24">
+                    <span>- View Submission</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Affiliations Sub-tabs -->
+            <div class="horizontal-tabs">
+              <button type="button" class="horizontal-tab active" data-affiliations-tab="subordinate">Subordinate</button>
+              <button type="button" class="horizontal-tab" data-affiliations-tab="superior">Superior</button>
+              <button type="button" class="horizontal-tab" data-affiliations-tab="pending">Pending</button>
+              <button type="button" class="horizontal-tab" data-affiliations-tab="history">History</button>
+            </div>
+
+            <!-- Subordinate Sub-tab -->
+            <div id="subordinate-subtab" class="affiliations-subtab-content active">
+            </div>
+
+            <!-- Superior Sub-tab -->
+            <div id="superior-subtab" class="affiliations-subtab-content" hidden>
+            </div>
+
+            <!-- Pending Sub-tab -->
+            <div id="pending-subtab" class="affiliations-subtab-content" hidden>
+            </div>
+
+            <!-- History Sub-tab -->
+            <div id="history-subtab" class="affiliations-subtab-content" hidden>
+            </div>
+
+          </div>
+          <!-- End Affiliations Tab -->
+
           <!-- Correspondence Tab Content -->
-          <div id="correspondence-tab" class="tab-panel active">
+          <div id="correspondence-tab" class="tab-panel" hidden>
             <!-- Sub-tabs for Emails and Letters -->
             <div class="horizontal-tabs">
               <button type="button" class="horizontal-tab active" data-correspondence-tab="emails">Emails</button>
@@ -1547,8 +1600,7 @@
       'Certificates': document.getElementById('certificates-tab'),
       'Submissions': document.getElementById('submissions-tab'),
       'Assets': null,
-      'Documents': null,
-      'Affiliations': null,
+      'Affiliations': document.getElementById('affiliations-tab'),
       'Invoices': null,
       'Inspections': document.getElementById('inspections-tab'),
       'Files': document.getElementById('document-locker-tab'),
@@ -3370,6 +3422,30 @@
 
     resendEmailModal.addEventListener('click', function(e) {
       if (e.target === resendEmailModal) closeResendEmailModal();
+    });
+
+    // Affiliations sub-tab switching
+    const affiliationsSubTabs = document.querySelectorAll('.horizontal-tab[data-affiliations-tab]');
+    const affiliationsSubTabContents = document.querySelectorAll('.affiliations-subtab-content');
+
+    affiliationsSubTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const targetSubTab = this.dataset.affiliationsTab;
+
+        affiliationsSubTabs.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+
+        affiliationsSubTabContents.forEach(content => {
+          content.classList.remove('active');
+          content.setAttribute('hidden', '');
+        });
+
+        const targetContent = document.getElementById(`${targetSubTab}-subtab`);
+        if (targetContent) {
+          targetContent.classList.add('active');
+          targetContent.removeAttribute('hidden');
+        }
+      });
     });
   </script>
 
