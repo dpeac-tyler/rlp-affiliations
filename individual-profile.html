@@ -797,7 +797,7 @@
               </div>
             </div>
 
-            <button type="button" class="usa-button margin-top-2">Add Affiliation</button>
+            <button type="button" class="usa-button margin-top-2" id="add-affiliation-btn">Add Affiliation</button>
 
             <!-- Affiliations Sub-tabs -->
             <div class="horizontal-tabs">
@@ -1710,6 +1710,35 @@
 
         <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
           <button type="button" class="usa-button" id="close-view-email-info-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Affiliation Modal -->
+  <div id="add-affiliation-modal" class="modal-overlay" hidden>
+    <div class="modal-content" style="max-width: 1000px;">
+      <div class="modal-header">
+        <h2 class="modal-title">Add Affiliation</h2>
+        <button type="button" class="modal-close" id="close-add-affiliation-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please use the below search fields to find the license or account to whom you wish to affiliate.</p>
+
+        <div class="usa-form-group">
+          <label class="usa-label" for="affiliation-type">Affiliation Type</label>
+          <select class="usa-select" id="affiliation-type" name="affiliation-type">
+            <option value="">Please Select</option>
+          </select>
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0;">
+          <button type="button" class="usa-button">Save Affiliation</button>
+          <button type="button" class="usa-button usa-button--secondary" id="cancel-add-affiliation">Cancel</button>
         </div>
       </div>
     </div>
@@ -3580,6 +3609,33 @@
 
     resendEmailModal.addEventListener('click', function(e) {
       if (e.target === resendEmailModal) closeResendEmailModal();
+    });
+
+    // Add Affiliation Modal
+    const addAffiliationBtn = document.getElementById('add-affiliation-btn');
+    const addAffiliationModal = document.getElementById('add-affiliation-modal');
+    const closeAddAffiliationModal = document.getElementById('close-add-affiliation-modal');
+
+    addAffiliationBtn.addEventListener('click', function() {
+      addAffiliationModal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeAddAffiliationModal.addEventListener('click', function() {
+      addAffiliationModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    });
+
+    document.getElementById('cancel-add-affiliation').addEventListener('click', function() {
+      addAffiliationModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    });
+
+    addAffiliationModal.addEventListener('click', function(e) {
+      if (e.target === addAffiliationModal) {
+        addAffiliationModal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+      }
     });
 
     // Affiliations sub-tab switching
