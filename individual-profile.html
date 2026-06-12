@@ -786,7 +786,7 @@
                     <span>- Download Certificate</span>
                   </div>
                   <div class="icon-key-item">
-                    <img src="assets/icon-delete.png" alt="" width="24" height="24">
+                    <img src="assets/remove-affiliation.png" alt="" width="24" height="24">
                     <span>- Remove Affiliation</span>
                   </div>
                   <div class="icon-key-item">
@@ -807,18 +807,174 @@
 
             <!-- Subordinate Sub-tab -->
             <div id="subordinate-subtab" class="affiliations-subtab-content active">
+              <div class="margin-top-2">
+                <div class="table-controls">
+                  <div class="table-controls__left">
+                    <strong id="subordinate-count">Showing 0 - 0 of 0 Entries</strong>
+                  </div>
+                  <div class="table-controls__right">
+                    <label for="entries-per-page-subordinate" class="table-controls__label">Show</label>
+                    <select class="usa-select table-controls__select" id="entries-per-page-subordinate" name="entries-per-page-subordinate">
+                      <option value="10" selected>10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </div>
+
+                <table class="usa-table usa-table--borderless usa-table--striped" id="subordinate-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Expiration Date <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" style="white-space: nowrap;">Controls</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="no-subordinate-message" style="background-color: #fff;">
+                      <td colspan="5" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <!-- Superior Sub-tab -->
             <div id="superior-subtab" class="affiliations-subtab-content" hidden>
+              <div class="margin-top-2">
+                <div class="usa-form-group margin-bottom-2">
+                  <label class="usa-label" for="superior-view-select">View Account or License</label>
+                  <select class="usa-select" id="superior-view-select" name="superior-view-select" style="max-width: 100%;">
+                    <option value="license" selected>License</option>
+                    <option value="account">Account</option>
+                  </select>
+                </div>
+
+                <div class="table-controls">
+                  <div class="table-controls__left">
+                    <strong id="superior-count">Showing 0 - 0 of 0 Entries</strong>
+                  </div>
+                  <div class="table-controls__right">
+                    <label for="entries-per-page-superior" class="table-controls__label">Show</label>
+                    <select class="usa-select table-controls__select" id="entries-per-page-superior" name="entries-per-page-superior">
+                      <option value="10" selected>10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </div>
+
+                <table class="usa-table usa-table--borderless usa-table--striped" id="superior-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Expiration Date <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" style="white-space: nowrap;">Controls</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="no-superior-message" style="background-color: #fff;">
+                      <td colspan="5" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <!-- Pending Sub-tab -->
             <div id="pending-subtab" class="affiliations-subtab-content" hidden>
+              <div class="margin-top-2">
+                <div class="usa-form-group margin-bottom-2">
+                  <label class="usa-label" for="pending-view-select">View Account or License</label>
+                  <select class="usa-select" id="pending-view-select" name="pending-view-select" style="max-width: 100%;">
+                    <option value="license" selected>License</option>
+                    <option value="account">Account</option>
+                  </select>
+                </div>
+
+                <div class="table-controls">
+                  <div class="table-controls__left">
+                    <strong id="pending-count">Showing 0 - 0 of 0 Entries</strong>
+                  </div>
+                  <div class="table-controls__right">
+                    <label for="entries-per-page-pending" class="table-controls__label">Show</label>
+                    <select class="usa-select table-controls__select" id="entries-per-page-pending" name="entries-per-page-pending">
+                      <option value="10" selected>10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </div>
+
+                <table class="usa-table usa-table--borderless usa-table--striped" id="pending-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Expiration Date <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" style="white-space: nowrap;">Controls</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="no-pending-message" style="background-color: #fff;">
+                      <td colspan="5" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <!-- History Sub-tab -->
             <div id="history-subtab" class="affiliations-subtab-content" hidden>
+              <div class="margin-top-2">
+                <div class="usa-form-group margin-bottom-2">
+                  <label class="usa-label" for="history-type-select">Select History Type</label>
+                  <select class="usa-select" id="history-type-select" name="history-type-select" style="max-width: 100%;">
+                    <option value="subordinate-history">Subordinate History</option>
+                    <option value="superior-license-history" selected>Superior License History</option>
+                    <option value="superior-account-history">Superior Account History</option>
+                  </select>
+                </div>
+
+                <div class="table-controls">
+                  <div class="table-controls__left">
+                    <strong id="history-count">Showing 0 - 0 of 0 Entries</strong>
+                  </div>
+                  <div class="table-controls__right">
+                    <label for="entries-per-page-history" class="table-controls__label">Show</label>
+                    <select class="usa-select table-controls__select" id="entries-per-page-history" name="entries-per-page-history">
+                      <option value="10" selected>10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                </div>
+
+                <table class="usa-table usa-table--borderless usa-table--striped" id="history-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" role="columnheader" aria-sort="none">License/Account Type <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Expiration Date <span class="sort-arrows"></span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr id="no-history-message" style="background-color: #fff;">
+                      <td colspan="4" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
 
           </div>
