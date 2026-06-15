@@ -1084,12 +1084,13 @@
                       <th scope="col" role="columnheader" aria-sort="none">License/Account Type <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
+                      <th scope="col" role="columnheader" aria-sort="none">Reason <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Expiration Date <span class="sort-arrows"></span></th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr id="no-history-message" style="background-color: #fff;">
-                      <td colspan="4" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                      <td colspan="5" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
                     </tr>
                   </tbody>
                 </table>
@@ -4101,6 +4102,7 @@
 
     // Remove Affiliation Modal
     const removeAffiliationModal = document.getElementById('remove-affiliation-modal');
+    let pendingRemovalRow = null;
 
     function resetRemoveModal() {
       document.getElementById('removal-reason').value = '';
@@ -4158,6 +4160,46 @@
 
       if (!valid) return;
 
+      if (pendingRemovalRow) {
+        const cells = pendingRemovalRow.querySelectorAll('td');
+        const licenseType = cells[0] ? cells[0].textContent.trim() : '—';
+        const licenseNumber = cells[1] ? cells[1].textContent.trim() : '—';
+
+        const reasonLabels = {
+          'business-closed': 'Business Location Closed',
+          'deceased': 'Deceased',
+          'fired': 'Individual Fired',
+          'transferred': 'Individual Transferred to Another Job',
+          'quit': 'Individual Quit',
+          'retired': 'Retired',
+          'other': document.getElementById('removal-other-reason').value.trim()
+        };
+        const reasonText = reasonLabels[reason] || reason;
+
+        const removalDateRaw = document.getElementById('removal-date').value;
+        let removalDateDisplay = 'Immediate';
+        if (removalDateRaw) {
+          const [y, m, d] = removalDateRaw.split('-');
+          removalDateDisplay = `${m}/${d}/${y}`;
+        }
+
+        const historyTbody = document.querySelector('#history-table tbody');
+        const noHistoryMsg = document.getElementById('no-history-message');
+        if (noHistoryMsg) noHistoryMsg.hidden = true;
+
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `<td>${licenseType}</td><td>${licenseNumber}</td><td style="color:#80252a;">Removed</td><td>${reasonText}</td><td>${removalDateDisplay}</td>`;
+        historyTbody.appendChild(newRow);
+
+        const historyRows = historyTbody.querySelectorAll('tr:not(#no-history-message)');
+        document.getElementById('history-count').textContent = `Showing 1 - ${historyRows.length} of ${historyRows.length} Entries`;
+
+        pendingRemovalRow.remove();
+        pendingRemovalRow = null;
+
+        showSuccessAlert('Affiliation removed successfully.');
+      }
+
       removeAffiliationModal.setAttribute('hidden', '');
       document.body.style.overflow = '';
       resetRemoveModal();
@@ -4177,6 +4219,7 @@
       if (!btn) return;
       const row = btn.closest('tr');
       if (!row) return;
+      pendingRemovalRow = row;
       const cells = row.querySelectorAll('td');
       const licenseName = cells[0] ? cells[0].textContent.trim() : 'this record';
       document.getElementById('remove-affiliation-name').textContent = licenseName;
