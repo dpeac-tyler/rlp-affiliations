@@ -812,7 +812,7 @@
               <div class="margin-top-2">
                 <div class="table-controls">
                   <div class="table-controls__left">
-                    <strong id="subordinate-count">Showing 0 - 0 of 0 Entries</strong>
+                    <strong id="subordinate-count">Showing 1 - 1 of 1 Entries</strong>
                   </div>
                   <div class="table-controls__right">
                     <label for="entries-per-page-subordinate" class="table-controls__label">Show</label>
@@ -825,19 +825,70 @@
                   </div>
                 </div>
 
-                <table class="usa-table usa-table--borderless usa-table--striped" id="subordinate-table">
+                <table class="usa-table usa-table--borderless" id="subordinate-table" style="width:100%;">
+                  <colgroup>
+                    <col style="width:22%"><col style="width:12%"><col style="width:14%"><col style="width:13%"><col style="width:14%"><col style="width:14%"><col style="width:11%">
+                  </colgroup>
                   <thead>
                     <tr>
-                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
+                      <th scope="col" colspan="2" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Expiration Date <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader" style="white-space: nowrap;">Controls</th>
+                      <th scope="col" colspan="2" role="columnheader" style="white-space: nowrap;">Controls</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr id="no-subordinate-message" style="background-color: #fff;">
-                      <td colspan="5" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                    <!-- Sample parent row -->
+                    <tr class="affiliation-parent-row">
+                      <td colspan="2">
+                        <button type="button" class="affiliation-expand-btn" data-target="sub-parent-1" aria-expanded="false" style="background:none;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:1.6rem;font-family:inherit;">
+                          <span class="expand-icon" style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid #1b1b1b;border-radius:2px;font-size:1.4rem;line-height:1;flex-shrink:0;">+</span>
+                          General Contractor License
+                        </button>
+                      </td>
+                      <td>GC-2024-00142</td>
+                      <td style="color:#417505;">Active</td>
+                      <td>12/31/2026</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <!-- Child sub-header -->
+                    <tr class="affiliation-child-header" data-parent="sub-parent-1" hidden>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;border-left:3px solid #1a4480;">License/Account Type</th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">License Number <span class="sort-arrows"></span></th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Name <span class="sort-arrows"></span></th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Affiliation Date <span class="sort-arrows"></span></th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Email</th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Phone Number</th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;white-space:nowrap;">Controls</th>
+                    </tr>
+                    <!-- Child rows -->
+                    <tr class="affiliation-child-row" data-parent="sub-parent-1" hidden>
+                      <td style="border-left:3px solid #1a4480;padding-left:1.6rem;">General Contractor License</td>
+                      <td>00000001</td>
+                      <td>Margaret L. Thornton</td>
+                      <td>04/15/2024</td>
+                      <td>m.thornton@springfieldgov.net</td>
+                      <td>(648) 984-9989</td>
+                      <td style="white-space:nowrap;">
+                        <a href="#" class="icon-button" aria-label="View"><img src="assets/eye-icon.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="Remove"><img src="assets/remove-affiliation.png" width="30" height="30"></a>
+                      </td>
+                    </tr>
+                    <tr class="affiliation-child-row" data-parent="sub-parent-1" hidden>
+                      <td style="border-left:3px solid #1a4480;padding-left:1.6rem;">General Contractor License</td>
+                      <td>00000002</td>
+                      <td>David R. Castillo</td>
+                      <td>04/15/2024</td>
+                      <td>d.castillo@columbusoh.gov</td>
+                      <td>(698) 498-4966</td>
+                      <td style="white-space:nowrap;">
+                        <a href="#" class="icon-button" aria-label="View"><img src="assets/eye-icon.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="Remove"><img src="assets/remove-affiliation.png" width="30" height="30"></a>
+                      </td>
+                    </tr>
+                    <tr id="no-subordinate-message" hidden style="background-color:#fff;">
+                      <td colspan="7" style="text-align:center;padding:2rem;color:#71767a;font-style:italic;">No data available</td>
                     </tr>
                   </tbody>
                 </table>
@@ -857,7 +908,7 @@
 
                 <div class="table-controls">
                   <div class="table-controls__left">
-                    <strong id="superior-count">Showing 0 - 0 of 0 Entries</strong>
+                    <strong id="superior-count">Showing 1 - 1 of 1 Entries</strong>
                   </div>
                   <div class="table-controls__right">
                     <label for="entries-per-page-superior" class="table-controls__label">Show</label>
@@ -870,19 +921,85 @@
                   </div>
                 </div>
 
-                <table class="usa-table usa-table--borderless usa-table--striped" id="superior-table">
+                <table class="usa-table usa-table--borderless" id="superior-table" style="width:100%;">
+                  <colgroup>
+                    <col style="width:22%"><col style="width:12%"><col style="width:14%"><col style="width:13%"><col style="width:14%"><col style="width:14%"><col style="width:11%">
+                  </colgroup>
                   <thead>
                     <tr>
-                      <th scope="col" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
+                      <th scope="col" colspan="2" role="columnheader" aria-sort="none">License Type <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">License Number <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Status <span class="sort-arrows"></span></th>
                       <th scope="col" role="columnheader" aria-sort="none">Expiration Date <span class="sort-arrows"></span></th>
-                      <th scope="col" role="columnheader" style="white-space: nowrap;">Controls</th>
+                      <th scope="col" colspan="2" role="columnheader" style="white-space: nowrap;">Controls</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr id="no-superior-message" style="background-color: #fff;">
-                      <td colspan="5" style="text-align: center; padding: 2rem; color: #71767a; font-style: italic;">No data available</td>
+                    <!-- Sample parent row -->
+                    <tr class="affiliation-parent-row">
+                      <td colspan="2">
+                        <button type="button" class="affiliation-expand-btn" data-target="sup-parent-1" aria-expanded="false" style="background:none;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:1.6rem;font-family:inherit;">
+                          <span class="expand-icon" style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid #1b1b1b;border-radius:2px;font-size:1.4rem;line-height:1;flex-shrink:0;">+</span>
+                          Drivers License
+                        </button>
+                      </td>
+                      <td>DL-2023-00891</td>
+                      <td style="color:#417505;">Active</td>
+                      <td>05/23/2026</td>
+                      <td colspan="2"></td>
+                    </tr>
+                    <!-- Child sub-header -->
+                    <tr class="affiliation-child-header" data-parent="sup-parent-1" hidden>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;border-left:3px solid #1a4480;">License/Account Type</th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">License Number <span class="sort-arrows"></span></th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Constituent Name <span class="sort-arrows"></span></th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Affiliation Date <span class="sort-arrows"></span></th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Email</th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;">Phone Number</th>
+                      <th scope="col" style="font-weight:700;font-size:1.6rem;border-bottom:2px solid #1b1b1b;padding:10px 12px;white-space:nowrap;">Controls</th>
+                    </tr>
+                    <!-- Child rows -->
+                    <tr class="affiliation-child-row" data-parent="sup-parent-1" hidden>
+                      <td style="border-left:3px solid #1a4480;padding-left:1.6rem;">Drivers License</td>
+                      <td>00000011</td>
+                      <td>Senita Atterbery</td>
+                      <td>04/20/2023</td>
+                      <td>s.atterbery@email.com</td>
+                      <td>(562) 269-8519</td>
+                      <td style="white-space:nowrap;">
+                        <a href="#" class="icon-button" aria-label="Download Certificate"><img src="assets/download-certificate.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="View"><img src="assets/eye-icon.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="Remove"><img src="assets/remove-affiliation.png" width="30" height="30"></a>
+                      </td>
+                    </tr>
+                    <tr class="affiliation-child-row" data-parent="sup-parent-1" hidden>
+                      <td style="border-left:3px solid #1a4480;padding-left:1.6rem;">Drivers License</td>
+                      <td>00000003</td>
+                      <td>Will Lewis</td>
+                      <td>04/20/2023</td>
+                      <td>will.lewis@email.com</td>
+                      <td>(698) 498-4966</td>
+                      <td style="white-space:nowrap;">
+                        <a href="#" class="icon-button" aria-label="Download Certificate"><img src="assets/download-certificate.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="View"><img src="assets/eye-icon.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="Remove"><img src="assets/remove-affiliation.png" width="30" height="30"></a>
+                      </td>
+                    </tr>
+                    <tr class="affiliation-child-row" data-parent="sup-parent-1" hidden>
+                      <td style="border-left:3px solid #1a4480;padding-left:1.6rem;">Drivers License</td>
+                      <td>00000001</td>
+                      <td>Kung Pao</td>
+                      <td>04/20/2023</td>
+                      <td>k.pao@email.com</td>
+                      <td>(651) 855-5614</td>
+                      <td style="white-space:nowrap;">
+                        <a href="#" class="icon-button" aria-label="Download Certificate"><img src="assets/download-certificate.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="View"><img src="assets/eye-icon.png" width="30" height="30"></a>
+                        <a href="#" class="icon-button" aria-label="Remove"><img src="assets/remove-affiliation.png" width="30" height="30"></a>
+                      </td>
+                    </tr>
+                    <tr id="no-superior-message" hidden style="background-color:#fff;">
+                      <td colspan="7" style="text-align:center;padding:2rem;color:#71767a;font-style:italic;">No data available</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1729,16 +1846,360 @@
       <div class="modal-body">
         <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please use the below search fields to find the license or account to whom you wish to affiliate.</p>
 
-        <div class="usa-form-group">
-          <label class="usa-label" for="affiliation-type">Affiliation Type</label>
-          <select class="usa-select" id="affiliation-type" name="affiliation-type">
-            <option value="">Please Select</option>
-          </select>
+        <!-- Affiliation Type radios -->
+        <div class="usa-form-group" id="affiliation-type-group">
+          <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0 0 0.5rem;">
+            <legend class="usa-label" style="margin-bottom: 0.8rem;">Affiliation Type <span class="field-required">Required</span></legend>
+            <div style="display: flex; gap: 3rem;">
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="affiliation-type-subordinate" type="radio" name="affiliation-type" value="subordinate">
+                <label class="usa-radio__label" for="affiliation-type-subordinate">Subordinate</label>
+              </div>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="affiliation-type-superior" type="radio" name="affiliation-type" value="superior">
+                <label class="usa-radio__label" for="affiliation-type-superior">Superior</label>
+              </div>
+            </div>
+            <span class="usa-error-message" id="affiliation-type-error" hidden>Please select an Affiliation Type.</span>
+          </fieldset>
         </div>
 
+        <!-- Search By radios -->
+        <div class="usa-form-group">
+          <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0 0 2rem;">
+            <legend class="usa-label" style="margin-bottom: 0.8rem;">Search By</legend>
+            <div style="display: flex; gap: 3rem;">
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="search-by-name" type="radio" name="search-by" value="name" checked>
+                <label class="usa-radio__label" for="search-by-name">Constituent Name</label>
+              </div>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="search-by-address" type="radio" name="search-by" value="address">
+                <label class="usa-radio__label" for="search-by-address">Physical Address</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Constituent Name fields -->
+        <div id="search-fields-name">
+          <div class="usa-form-group">
+            <label class="usa-label" for="search-constituent-name">Constituent Name</label>
+            <input class="usa-input" id="search-constituent-name" name="search-constituent-name" type="text" placeholder="Enter name to search…">
+          </div>
+        </div>
+
+        <!-- Physical Address fields (hidden by default) -->
+        <div id="search-fields-address" hidden>
+          <!-- Row 1: Address 1, Address 2, City -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="usa-form-group">
+              <label class="usa-label" for="search-address1">Address 1</label>
+              <input class="usa-input" id="search-address1" name="search-address1" type="text" placeholder="123 Main St">
+            </div>
+            <div class="usa-form-group">
+              <label class="usa-label" for="search-address2">Address 2</label>
+              <input class="usa-input" id="search-address2" name="search-address2" type="text" placeholder="Apt, Suite, etc.">
+            </div>
+            <div class="usa-form-group">
+              <label class="usa-label" for="search-city">City</label>
+              <input class="usa-input" id="search-city" name="search-city" type="text" placeholder="City">
+            </div>
+          </div>
+          <!-- Row 2: State, ZIP Code -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+            <div class="usa-form-group">
+              <label class="usa-label" for="search-state">State</label>
+              <select class="usa-select" id="search-state" name="search-state">
+                <option value="">Please Select</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+                <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+                <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+                <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+                <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+                <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+                <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+                <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+              </select>
+            </div>
+            <div class="usa-form-group">
+              <label class="usa-label" for="search-zip">ZIP Code</label>
+              <input class="usa-input" id="search-zip" name="search-zip" type="text" placeholder="00000">
+            </div>
+          </div>
+        </div>
+
+        <!-- Search actions -->
+        <div style="margin-top: 1.5rem; margin-bottom: 2rem;">
+          <button type="button" class="usa-button" id="affiliation-search-btn">Search</button>
+          <button type="button" class="usa-button usa-button--outline" id="affiliation-clear-btn">Clear</button>
+        </div>
+
+        <!-- Search results table (populated after search) -->
+        <div id="affiliation-search-results" hidden>
+          <div class="table-controls" style="margin-bottom: 0.5rem;">
+            <div class="table-controls__left">
+              <strong>Showing 1 - 5 of 5 Entries</strong>
+            </div>
+            <div class="table-controls__right">
+              <label for="aff-results-per-page" class="table-controls__label">Show</label>
+              <select class="usa-select table-controls__select" id="aff-results-per-page" name="aff-results-per-page">
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+          </div>
+          <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%;">
+            <thead>
+              <tr>
+                <th scope="col" style="width: 5%;">Select</th>
+                <th scope="col">Constituent Name</th>
+                <th scope="col">Physical Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="usa-checkbox">
+                    <input class="usa-checkbox__input affiliation-select-row" type="checkbox" id="aff-row-1" name="aff-rows" value="0">
+                    <label class="usa-checkbox__label" for="aff-row-1">&nbsp;</label>
+                  </div>
+                </td>
+                <td>Margaret L. Thornton</td>
+                <td>412 Birchwood Ave, Springfield, IL 62704</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="usa-checkbox">
+                    <input class="usa-checkbox__input affiliation-select-row" type="checkbox" id="aff-row-2" name="aff-rows" value="1">
+                    <label class="usa-checkbox__label" for="aff-row-2">&nbsp;</label>
+                  </div>
+                </td>
+                <td>David R. Castillo</td>
+                <td>89 Oakmont Dr, Columbus, OH 43215</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="usa-checkbox">
+                    <input class="usa-checkbox__input affiliation-select-row" type="checkbox" id="aff-row-3" name="aff-rows" value="2">
+                    <label class="usa-checkbox__label" for="aff-row-3">&nbsp;</label>
+                  </div>
+                </td>
+                <td>Thornton &amp; Associates LLC</td>
+                <td>1750 Commerce Blvd, Suite 300, Austin, TX 78701</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="usa-checkbox">
+                    <input class="usa-checkbox__input affiliation-select-row" type="checkbox" id="aff-row-4" name="aff-rows" value="3">
+                    <label class="usa-checkbox__label" for="aff-row-4">&nbsp;</label>
+                  </div>
+                </td>
+                <td>Patricia A. Nguyen</td>
+                <td>33 Maple Street, Portland, OR 97201</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="usa-checkbox">
+                    <input class="usa-checkbox__input affiliation-select-row" type="checkbox" id="aff-row-5" name="aff-rows" value="4">
+                    <label class="usa-checkbox__label" for="aff-row-5">&nbsp;</label>
+                  </div>
+                </td>
+                <td>Blue Ridge Contracting Inc.</td>
+                <td>601 Industrial Pkwy, Roanoke, VA 24011</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid #dfe1e2; margin: 2rem 0;">
+
         <div class="modal-footer" style="padding-left: 0;">
-          <button type="button" class="usa-button">Save Affiliation</button>
+          <button type="button" class="usa-button" id="add-selected-btn">Add Selected</button>
           <button type="button" class="usa-button usa-button--secondary" id="cancel-add-affiliation">Cancel</button>
+        </div>
+      </div>
+
+      <script>
+        // Simulated license data for Add Selected (parent rows, no pre-loaded children)
+        const affiliationRowData = [
+          { licenseType: 'General Contractor',  licenseNumber: 'GC-2024-00142', status: 'Active',          statusColor: '#417505', expiration: '12/31/2026' },
+          { licenseType: 'Electrical',           licenseNumber: 'EL-2023-00891', status: 'Active',          statusColor: '#417505', expiration: '06/30/2025' },
+          { licenseType: 'Plumbing',             licenseNumber: 'PL-2024-00337', status: 'Pending Renewal', statusColor: '#8F5800', expiration: '03/15/2025' },
+          { licenseType: 'HVAC',                 licenseNumber: 'HV-2022-01204', status: 'Active',          statusColor: '#417505', expiration: '09/30/2025' },
+          { licenseType: 'General Contractor',   licenseNumber: 'GC-2021-00756', status: 'Expired',         statusColor: '#80252A', expiration: '01/01/2024' },
+        ];
+
+        let newParentCounter = 100;
+
+        function updateTableCount(tableId, countId) {
+          const tbody = document.querySelector('#' + tableId + ' tbody');
+          const total = tbody.querySelectorAll('tr.affiliation-parent-row').length;
+          document.getElementById(countId).textContent = total === 0
+            ? 'Showing 0 - 0 of 0 Entries'
+            : 'Showing 1 - ' + total + ' of ' + total + ' Entries';
+        }
+
+        // Expand/collapse toggle (delegated)
+        document.addEventListener('click', function (e) {
+          const btn = e.target.closest('.affiliation-expand-btn');
+          if (!btn) return;
+          const targetId = btn.getAttribute('data-target');
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!isExpanded));
+          btn.querySelector('.expand-icon').textContent = isExpanded ? '+' : '−';
+          document.querySelectorAll('[data-parent="' + targetId + '"]').forEach(function (row) {
+            row.hidden = isExpanded;
+          });
+        });
+
+        // Search By toggle
+        document.querySelectorAll('input[name="search-by"]').forEach(radio => {
+          radio.addEventListener('change', function () {
+            document.getElementById('search-fields-name').hidden = this.value !== 'name';
+            document.getElementById('search-fields-address').hidden = this.value !== 'address';
+          });
+        });
+
+        // Affiliation Type validation helper
+        function getAffiliationType() {
+          const checked = document.querySelector('input[name="affiliation-type"]:checked');
+          const group = document.getElementById('affiliation-type-group');
+          const error = document.getElementById('affiliation-type-error');
+          if (!checked) {
+            group.classList.add('usa-form-group--error');
+            error.hidden = false;
+            return null;
+          }
+          group.classList.remove('usa-form-group--error');
+          error.hidden = true;
+          return checked.value;
+        }
+
+        // Search — validate type first, then show results
+        document.getElementById('affiliation-search-btn').addEventListener('click', function () {
+          if (!getAffiliationType()) return;
+          document.getElementById('affiliation-search-results').hidden = false;
+        });
+
+        // Clear
+        document.getElementById('affiliation-clear-btn').addEventListener('click', function () {
+          document.getElementById('affiliation-search-results').hidden = true;
+          document.querySelectorAll('.affiliation-select-row').forEach(cb => cb.checked = false);
+          document.getElementById('search-constituent-name').value = '';
+          document.getElementById('search-address1').value = '';
+          document.getElementById('search-address2').value = '';
+          document.getElementById('search-city').value = '';
+          document.getElementById('search-state').value = '';
+          document.getElementById('search-zip').value = '';
+        });
+
+        // Add Selected — inserts new expandable parent rows (no children pre-loaded)
+        document.getElementById('add-selected-btn').addEventListener('click', function () {
+          const type = getAffiliationType();
+          if (!type) return;
+
+          const checked = document.querySelectorAll('.affiliation-select-row:checked');
+          if (checked.length === 0) return;
+
+          const tableId = type === 'subordinate' ? 'subordinate-table' : 'superior-table';
+          const countId = type === 'subordinate' ? 'subordinate-count' : 'superior-count';
+          const tbody   = document.querySelector('#' + tableId + ' tbody');
+
+          checked.forEach(cb => {
+            const idx    = parseInt(cb.value, 10);
+            const data   = affiliationRowData[idx];
+            const pid    = 'new-parent-' + (++newParentCounter);
+
+            const parentTr = document.createElement('tr');
+            parentTr.className = 'affiliation-parent-row';
+            parentTr.innerHTML =
+              '<td colspan="2">' +
+                '<button type="button" class="affiliation-expand-btn" data-target="' + pid + '" aria-expanded="false" style="background:none;border:none;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:1.6rem;font-family:inherit;">' +
+                  '<span class="expand-icon" style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border:1px solid #1b1b1b;border-radius:2px;font-size:1.4rem;line-height:1;flex-shrink:0;">+</span>' +
+                  data.licenseType +
+                '</button>' +
+              '</td>' +
+              '<td>' + data.licenseNumber + '</td>' +
+              '<td style="color:' + data.statusColor + ';">' + data.status + '</td>' +
+              '<td>' + data.expiration + '</td>' +
+              '<td colspan="2"></td>';
+
+            tbody.insertBefore(parentTr, tbody.lastElementChild);
+          });
+
+          updateTableCount(tableId, countId);
+
+          // Switch to the correct sub-tab
+          document.querySelectorAll('.horizontal-tab').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.affiliations-subtab-content').forEach(p => p.hidden = true);
+          const targetTab   = document.querySelector('[data-affiliations-tab="' + type + '"]');
+          const targetPanel = document.getElementById(type + '-subtab');
+          if (targetTab)   targetTab.classList.add('active');
+          if (targetPanel) targetPanel.hidden = false;
+
+          // Close and reset modal
+          document.getElementById('add-affiliation-modal').hidden = true;
+          document.body.style.overflow = '';
+          document.querySelectorAll('.affiliation-select-row').forEach(cb => cb.checked = false);
+          document.getElementById('affiliation-search-results').hidden = true;
+          const affChecked = document.querySelector('input[name="affiliation-type"]:checked');
+          if (affChecked) affChecked.checked = false;
+        });
+      </script>
+    </div>
+  </div>
+
+  <!-- Remove Affiliation Modal -->
+  <div id="remove-affiliation-modal" class="modal-overlay" hidden>
+    <div class="modal-content" style="max-width: 640px;">
+      <div class="modal-header">
+        <h2 class="modal-title">Remove Affiliation</h2>
+        <button type="button" class="modal-close" id="close-remove-affiliation-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please select a reason that you are removing the affiliation with <strong id="remove-affiliation-name"></strong> from your <strong id="remove-affiliation-submission"></strong>. If you do not see an applicable reason below, please select "Other Reason", which will open a text field for you to document your reason. A notification email will be sent to your affiliate to advise them of the change in their affiliation status.</p>
+
+        <div class="usa-form-group" id="removal-reason-group">
+          <label class="usa-label" for="removal-reason">Reason for Removal <span class="field-required">Required</span></label>
+          <select class="usa-select" id="removal-reason" name="removal-reason">
+            <option value="">Please Select</option>
+            <option value="business-closed">Business Location Closed</option>
+            <option value="deceased">Deceased</option>
+            <option value="fired">Individual Fired</option>
+            <option value="transferred">Individual Transferred to Another Job</option>
+            <option value="quit">Individual Quit</option>
+            <option value="retired">Retired</option>
+            <option value="other">Other</option>
+          </select>
+          <span class="usa-error-message" id="removal-reason-error" hidden>Please select a reason for removal.</span>
+        </div>
+
+        <div class="usa-form-group" id="removal-other-group" hidden>
+          <label class="usa-label" for="removal-other-reason">Other Reason <span class="field-required">Required</span></label>
+          <textarea class="usa-textarea" id="removal-other-reason" name="removal-other-reason" maxlength="200" rows="4" placeholder="Please describe your reason (200 characters max)"></textarea>
+          <span class="usa-hint" id="removal-other-char-count" style="display:block; text-align:right; margin-top:0.4rem;">200 characters remaining</span>
+          <span class="usa-error-message" id="removal-other-error" hidden>Please provide a reason.</span>
+        </div>
+
+        <p style="font-size: 1.6rem; margin-bottom: 2rem;">If you wish to set a removal date in the future use the date field below. If you leave the date field blank the affiliation will be removed immediately.</p>
+
+        <div class="usa-form-group">
+          <label class="usa-label" for="removal-date">Set Removal Date</label>
+          <input class="usa-input" id="removal-date" name="removal-date" type="date" style="max-width: 20rem;">
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
+          <button type="button" class="usa-button" id="confirm-remove-affiliation-btn">Remove Affiliation</button>
+          <button type="button" class="usa-button usa-button--secondary" id="cancel-remove-affiliation-btn">Cancel</button>
         </div>
       </div>
     </div>
@@ -3636,6 +4097,92 @@
         addAffiliationModal.setAttribute('hidden', '');
         document.body.style.overflow = '';
       }
+    });
+
+    // Remove Affiliation Modal
+    const removeAffiliationModal = document.getElementById('remove-affiliation-modal');
+
+    function resetRemoveModal() {
+      document.getElementById('removal-reason').value = '';
+      document.getElementById('removal-reason-group').classList.remove('usa-form-group--error');
+      document.getElementById('removal-reason-error').hidden = true;
+      document.getElementById('removal-other-group').hidden = true;
+      document.getElementById('removal-other-reason').value = '';
+      document.getElementById('removal-other-char-count').textContent = '200 characters remaining';
+      document.getElementById('removal-other-error').hidden = true;
+      document.getElementById('removal-date').value = '';
+    }
+
+    // Show/hide Other textarea
+    document.getElementById('removal-reason').addEventListener('change', function () {
+      const otherGroup = document.getElementById('removal-other-group');
+      otherGroup.hidden = this.value !== 'other';
+      // Clear error state when user makes a selection
+      document.getElementById('removal-reason-group').classList.remove('usa-form-group--error');
+      document.getElementById('removal-reason-error').hidden = true;
+    });
+
+    // Character countdown
+    document.getElementById('removal-other-reason').addEventListener('input', function () {
+      const remaining = 200 - this.value.length;
+      document.getElementById('removal-other-char-count').textContent = remaining + ' characters remaining';
+      document.getElementById('removal-other-error').hidden = this.value.trim().length > 0;
+    });
+
+    document.getElementById('close-remove-affiliation-modal').addEventListener('click', function () {
+      removeAffiliationModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      resetRemoveModal();
+    });
+
+    document.getElementById('cancel-remove-affiliation-btn').addEventListener('click', function () {
+      removeAffiliationModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      resetRemoveModal();
+    });
+
+    document.getElementById('confirm-remove-affiliation-btn').addEventListener('click', function () {
+      const reason = document.getElementById('removal-reason').value;
+      let valid = true;
+
+      if (!reason) {
+        document.getElementById('removal-reason-group').classList.add('usa-form-group--error');
+        document.getElementById('removal-reason-error').hidden = false;
+        valid = false;
+      }
+
+      if (reason === 'other' && !document.getElementById('removal-other-reason').value.trim()) {
+        document.getElementById('removal-other-error').hidden = false;
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      removeAffiliationModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      resetRemoveModal();
+    });
+
+    removeAffiliationModal.addEventListener('click', function (e) {
+      if (e.target === removeAffiliationModal) {
+        removeAffiliationModal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+        resetRemoveModal();
+      }
+    });
+
+    // Delegate remove-affiliation icon clicks in the affiliation tables
+    document.addEventListener('click', function (e) {
+      const btn = e.target.closest('a[aria-label="Remove"]');
+      if (!btn) return;
+      const row = btn.closest('tr');
+      if (!row) return;
+      const cells = row.querySelectorAll('td');
+      const licenseName = cells[0] ? cells[0].textContent.trim() : 'this record';
+      document.getElementById('remove-affiliation-name').textContent = licenseName;
+      document.getElementById('remove-affiliation-submission').textContent = 'General Contractor License GC-2024-00142';
+      removeAffiliationModal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
     });
 
     // Affiliations sub-tab switching
