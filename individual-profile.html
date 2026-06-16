@@ -2206,6 +2206,105 @@
     </div>
   </div>
 
+  <!-- Manage License Modal -->
+  <div id="manage-license-modal" class="modal-overlay" hidden>
+    <div class="modal-content" style="max-width: 1000px;">
+      <div class="modal-header">
+        <h2 class="modal-title">Manage License</h2>
+        <button type="button" class="modal-close" id="close-manage-license-modal" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="display: grid; gap: 1.2rem; margin-bottom: 1.5rem;">
+          <p style="font-size: 1.6rem; margin: 0;"><strong>License Type:</strong> <span id="ml-license-type"></span></p>
+          <p style="font-size: 1.6rem; margin: 0;"><strong>License Number:</strong> <span id="ml-license-number"></span></p>
+          <p style="font-size: 1.6rem; margin: 0;"><strong>Application Type:</strong> <span id="ml-application-type"></span></p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
+            <p style="font-size: 1.6rem; margin: 0;"><strong>Status:</strong> <span id="ml-status"></span></p>
+            <p style="font-size: 1.6rem; margin: 0;"><strong>Start Date:</strong> <span id="ml-start-date"></span></p>
+            <p style="font-size: 1.6rem; margin: 0;"><strong>Expiration Date:</strong> <span id="ml-expiration-date"></span></p>
+          </div>
+        </div>
+        <hr style="border: none; border-top: 2px solid #dfe1e2; margin: 0 0 1.5rem;">
+
+        <div class="horizontal-tabs">
+          <button type="button" class="horizontal-tab active" data-ml-tab="ml-panel-license">Manage License</button>
+          <button type="button" class="horizontal-tab" data-ml-tab="ml-panel-affiliation">Manage Affiliation</button>
+        </div>
+
+        <div id="ml-panel-license" class="ml-tab-panel" style="padding-top: 1.5rem;">
+          <p style="font-size: 1.6rem; margin-bottom: 2rem;">You must change the License Status and/or Expiration Date. Add Notes to support the change(s).</p>
+
+          <div class="usa-form-group" style="margin-bottom: 3rem;">
+            <label class="usa-label" for="ml-new-status">New Status</label>
+            <select class="usa-select" id="ml-new-status" name="ml-new-status">
+              <option value="">Please Select</option>
+              <option value="Suspended">Suspended</option>
+              <option value="Canceled">Canceled</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Revoked">Revoked</option>
+              <option value="Voided">Voided</option>
+            </select>
+          </div>
+
+          <div class="usa-form-group" style="margin-bottom: 3rem;">
+            <label class="usa-label" for="ml-new-expiration-date">New Expiration Date</label>
+            <div class="usa-hint">mm/dd/yyyy</div>
+            <input class="usa-input date-input-custom" id="ml-new-expiration-date" name="ml-new-expiration-date" type="date" style="max-width: 20rem;">
+          </div>
+
+          <div class="usa-form-group" style="margin-bottom: 2rem;">
+            <label class="usa-label" for="ml-notes">Notes <span class="field-required">Required</span></label>
+            <textarea class="usa-textarea" id="ml-notes" name="ml-notes" maxlength="4000" rows="5"></textarea>
+            <span class="usa-hint" id="ml-notes-char-count" style="display: block; text-align: right; margin-top: 0.4rem;">4000 characters remaining</span>
+          </div>
+        </div>
+
+        <div id="ml-panel-affiliation" class="ml-tab-panel" style="padding-top: 1.5rem;" hidden>
+          <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please select a reason that you are removing the affiliation with <strong id="ml-aff-name"></strong> from the <strong id="ml-aff-submission"></strong>. If you do not see an applicable reason below, please select "Other Reason", which will open a text field for you to document your reason. A notification email will be sent to your affiliate to advise them of the change in their affiliation status.</p>
+
+          <div class="usa-form-group" id="ml-aff-reason-group" style="margin-bottom: 3rem;">
+            <label class="usa-label" for="ml-aff-reason">Reason for Removal <span class="field-required">Required</span></label>
+            <select class="usa-select" id="ml-aff-reason" name="ml-aff-reason">
+              <option value="">Please Select</option>
+              <option value="business-closed">Business Location Closed</option>
+              <option value="deceased">Deceased</option>
+              <option value="fired">Individual Fired</option>
+              <option value="transferred">Individual Transferred to Another Job</option>
+              <option value="quit">Individual Quit</option>
+              <option value="retired">Retired</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="usa-error-message" id="ml-aff-reason-error" hidden>Please select a reason for removal.</span>
+          </div>
+
+          <div class="usa-form-group" id="ml-aff-other-group" style="margin-bottom: 3rem;" hidden>
+            <label class="usa-label" for="ml-aff-other-reason">Other Reason <span class="field-required">Required</span></label>
+            <textarea class="usa-textarea" id="ml-aff-other-reason" name="ml-aff-other-reason" maxlength="200" rows="4" placeholder="Please describe your reason (200 characters max)"></textarea>
+            <span class="usa-hint" id="ml-aff-other-char-count" style="display: block; text-align: right; margin-top: 0.4rem;">200 characters remaining</span>
+            <span class="usa-error-message" id="ml-aff-other-error" hidden>Please provide a reason.</span>
+          </div>
+
+          <p style="font-size: 1.6rem; margin-bottom: 2rem;">If you wish to set a removal date in the future use the date field below. If you leave the date field blank the affiliation will be removed immediately.</p>
+
+          <div class="usa-form-group" style="margin-bottom: 2rem;">
+            <label class="usa-label" for="ml-aff-date">Set Removal Date</label>
+            <div class="usa-hint">mm/dd/yyyy</div>
+            <input class="usa-input date-input-custom" id="ml-aff-date" name="ml-aff-date" type="date" style="max-width: 20rem;">
+          </div>
+        </div>
+
+        <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
+          <button type="button" class="usa-button" id="save-manage-license-btn">Save</button>
+          <button type="button" class="usa-button usa-button--secondary" id="close-manage-license-btn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div id="delete-document-modal" class="modal-overlay" hidden>
     <div class="modal-content" style="max-width: 480px;">
       <div class="modal-header">
@@ -4225,6 +4324,83 @@
       document.getElementById('remove-affiliation-name').textContent = licenseName;
       document.getElementById('remove-affiliation-submission').textContent = 'General Contractor License GC-2024-00142';
       removeAffiliationModal.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Manage License Modal
+    const manageLicenseModal = document.getElementById('manage-license-modal');
+
+    function closeManageLicenseModal() {
+      manageLicenseModal.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('close-manage-license-modal').addEventListener('click', closeManageLicenseModal);
+    document.getElementById('close-manage-license-btn').addEventListener('click', closeManageLicenseModal);
+    manageLicenseModal.addEventListener('click', function(e) {
+      if (e.target === manageLicenseModal) closeManageLicenseModal();
+    });
+
+    document.getElementById('ml-notes').addEventListener('input', function() {
+      const remaining = 4000 - this.value.length;
+      document.getElementById('ml-notes-char-count').textContent = remaining + ' characters remaining';
+    });
+
+    document.getElementById('ml-aff-reason').addEventListener('change', function() {
+      const otherGroup = document.getElementById('ml-aff-other-group');
+      otherGroup.hidden = this.value !== 'other';
+      document.getElementById('ml-aff-reason-group').classList.remove('usa-form-group--error');
+      document.getElementById('ml-aff-reason-error').hidden = true;
+    });
+
+    document.getElementById('ml-aff-other-reason').addEventListener('input', function() {
+      const remaining = 200 - this.value.length;
+      document.getElementById('ml-aff-other-char-count').textContent = remaining + ' characters remaining';
+      document.getElementById('ml-aff-other-error').hidden = this.value.trim().length > 0;
+    });
+
+    // Manage License inner tab switching
+    manageLicenseModal.addEventListener('click', function(e) {
+      const tab = e.target.closest('[data-ml-tab]');
+      if (!tab) return;
+      const target = tab.dataset.mlTab;
+      manageLicenseModal.querySelectorAll('[data-ml-tab]').forEach(t => t.classList.remove('active'));
+      manageLicenseModal.querySelectorAll('.ml-tab-panel').forEach(p => p.setAttribute('hidden', ''));
+      tab.classList.add('active');
+      document.getElementById(target).removeAttribute('hidden');
+    });
+
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('a[aria-label="Manage License"]');
+      if (!btn) return;
+      e.preventDefault();
+      const row = btn.closest('tr');
+      const cells = row.querySelectorAll('td');
+
+      document.getElementById('ml-license-type').textContent = cells[0].textContent.trim();
+      document.getElementById('ml-license-number').textContent = cells[1].textContent.trim();
+      document.getElementById('ml-application-type').textContent = cells[2].textContent.trim();
+
+      const statusSpan = cells[5].querySelector('span');
+      const mlStatus = document.getElementById('ml-status');
+      mlStatus.textContent = statusSpan ? statusSpan.textContent.trim() : cells[5].textContent.trim();
+      mlStatus.className = statusSpan ? statusSpan.className : '';
+
+      document.getElementById('ml-start-date').textContent = cells[3].textContent.trim();
+      document.getElementById('ml-expiration-date').textContent = cells[4].textContent.trim();
+
+      const licenseType = cells[0].textContent.trim();
+      const licenseNumber = cells[1].textContent.trim();
+      document.getElementById('ml-aff-name').textContent = licenseType;
+      document.getElementById('ml-aff-submission').textContent = licenseType + ' ' + licenseNumber;
+
+      // Reset to first tab on open
+      manageLicenseModal.querySelectorAll('[data-ml-tab]').forEach(t => t.classList.remove('active'));
+      manageLicenseModal.querySelectorAll('.ml-tab-panel').forEach(p => p.setAttribute('hidden', ''));
+      manageLicenseModal.querySelector('[data-ml-tab="ml-panel-license"]').classList.add('active');
+      document.getElementById('ml-panel-license').removeAttribute('hidden');
+
+      manageLicenseModal.removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
     });
 
