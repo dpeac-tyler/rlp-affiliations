@@ -2230,15 +2230,10 @@
         </div>
         <hr style="border: none; border-top: 2px solid #dfe1e2; margin: 0 0 1.5rem;">
 
-        <div class="horizontal-tabs">
-          <button type="button" class="horizontal-tab active" data-ml-tab="ml-panel-license">Manage License</button>
-          <button type="button" class="horizontal-tab" data-ml-tab="ml-panel-affiliation">Manage Affiliation</button>
-        </div>
+        <p style="font-size: 1.6rem; margin-bottom: 2rem;">You must change the License Status and/or Expiration Date. Add Notes to support the change(s).</p>
 
-        <div id="ml-panel-license" class="ml-tab-panel" style="padding-top: 1.5rem;">
-          <p style="font-size: 1.6rem; margin-bottom: 2rem;">You must change the License Status and/or Expiration Date. Add Notes to support the change(s).</p>
-
-          <div class="usa-form-group" style="margin-bottom: 3rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+          <div class="usa-form-group" style="margin-bottom: 0;">
             <label class="usa-label" for="ml-new-status">New Status</label>
             <select class="usa-select" id="ml-new-status" name="ml-new-status">
               <option value="">Please Select</option>
@@ -2249,24 +2244,30 @@
               <option value="Voided">Voided</option>
             </select>
           </div>
-
-          <div class="usa-form-group" style="margin-bottom: 3rem;">
+          <div class="usa-form-group" style="margin-bottom: 0;">
             <label class="usa-label" for="ml-new-expiration-date">New Expiration Date</label>
-            <div class="usa-hint">mm/dd/yyyy</div>
             <input class="usa-input date-input-custom" id="ml-new-expiration-date" name="ml-new-expiration-date" type="date" style="max-width: 20rem;">
-          </div>
-
-          <div class="usa-form-group" style="margin-bottom: 2rem;">
-            <label class="usa-label" for="ml-notes">Notes <span class="field-required">Required</span></label>
-            <textarea class="usa-textarea" id="ml-notes" name="ml-notes" maxlength="4000" rows="5"></textarea>
-            <span class="usa-hint" id="ml-notes-char-count" style="display: block; text-align: right; margin-top: 0.4rem;">4000 characters remaining</span>
           </div>
         </div>
 
-        <div id="ml-panel-affiliation" class="ml-tab-panel" style="padding-top: 1.5rem;" hidden>
-          <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please select a reason that you are removing the affiliation with <strong id="ml-aff-name"></strong> from the <strong id="ml-aff-submission"></strong>. If you do not see an applicable reason below, please select "Other Reason", which will open a text field for you to document your reason. A notification email will be sent to your affiliate to advise them of the change in their affiliation status.</p>
+        <div class="usa-form-group" style="margin-bottom: 3rem;">
+          <label class="usa-label" for="ml-notes">Notes <span class="field-required">Required</span></label>
+          <textarea class="usa-textarea" id="ml-notes" name="ml-notes" maxlength="4000" rows="5"></textarea>
+          <span class="usa-hint" id="ml-notes-char-count" style="display: block; text-align: right; margin-top: 0.4rem;">4000 characters remaining</span>
+        </div>
 
-          <div class="usa-form-group" id="ml-aff-reason-group" style="margin-bottom: 3rem;">
+        <hr style="border: none; border-top: 2px solid #dfe1e2; margin: 0 0 1.5rem;">
+
+        <div class="usa-checkbox" style="margin-bottom: 1.5rem;">
+          <input class="usa-checkbox__input" id="ml-remove-affiliation" type="checkbox" name="ml-remove-affiliation">
+          <label class="usa-checkbox__label" for="ml-remove-affiliation">Remove affiliation</label>
+        </div>
+
+        <div id="ml-aff-section" hidden>
+          <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please select a reason that you are removing the affiliation with <strong id="ml-aff-name"></strong> from the <strong id="ml-aff-submission"></strong>. If you do not see an applicable reason below, please select "Other Reason", which will open a text field for you to document your reason. A notification email will be sent to your affiliate to advise them of the change in their affiliation status. If you wish to set a removal date in the future use the date field below. If you leave the date field blank the affiliation will be removed immediately.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem;">
+          <div class="usa-form-group" id="ml-aff-reason-group" style="margin-bottom: 0;">
             <label class="usa-label" for="ml-aff-reason">Reason for Removal <span class="field-required">Required</span></label>
             <select class="usa-select" id="ml-aff-reason" name="ml-aff-reason">
               <option value="">Please Select</option>
@@ -2280,26 +2281,23 @@
             </select>
             <span class="usa-error-message" id="ml-aff-reason-error" hidden>Please select a reason for removal.</span>
           </div>
-
-          <div class="usa-form-group" id="ml-aff-other-group" style="margin-bottom: 3rem;" hidden>
-            <label class="usa-label" for="ml-aff-other-reason">Other Reason <span class="field-required">Required</span></label>
-            <textarea class="usa-textarea" id="ml-aff-other-reason" name="ml-aff-other-reason" maxlength="200" rows="4" placeholder="Please describe your reason (200 characters max)"></textarea>
-            <span class="usa-hint" id="ml-aff-other-char-count" style="display: block; text-align: right; margin-top: 0.4rem;">200 characters remaining</span>
-            <span class="usa-error-message" id="ml-aff-other-error" hidden>Please provide a reason.</span>
-          </div>
-
-          <p style="font-size: 1.6rem; margin-bottom: 2rem;">If you wish to set a removal date in the future use the date field below. If you leave the date field blank the affiliation will be removed immediately.</p>
-
-          <div class="usa-form-group" style="margin-bottom: 2rem;">
+          <div class="usa-form-group" style="margin-bottom: 0;">
             <label class="usa-label" for="ml-aff-date">Set Removal Date</label>
-            <div class="usa-hint">mm/dd/yyyy</div>
             <input class="usa-input date-input-custom" id="ml-aff-date" name="ml-aff-date" type="date" style="max-width: 20rem;">
           </div>
         </div>
 
+        <div class="usa-form-group" id="ml-aff-other-group" style="margin-bottom: 3rem;" hidden>
+          <label class="usa-label" for="ml-aff-other-reason">Other Reason <span class="field-required">Required</span></label>
+          <textarea class="usa-textarea" id="ml-aff-other-reason" name="ml-aff-other-reason" maxlength="200" rows="4" placeholder="Please describe your reason (200 characters max)"></textarea>
+          <span class="usa-hint" id="ml-aff-other-char-count" style="display: block; text-align: right; margin-top: 0.4rem;">200 characters remaining</span>
+          <span class="usa-error-message" id="ml-aff-other-error" hidden>Please provide a reason.</span>
+        </div>
+        </div><!-- end ml-aff-section -->
+
         <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
           <button type="button" class="usa-button" id="save-manage-license-btn">Save</button>
-          <button type="button" class="usa-button usa-button--secondary" id="close-manage-license-btn">Close</button>
+          <button type="button" class="usa-button usa-button--secondary" id="close-manage-license-btn">Cancel</button>
         </div>
       </div>
     </div>
@@ -4346,6 +4344,10 @@
       document.getElementById('ml-notes-char-count').textContent = remaining + ' characters remaining';
     });
 
+    document.getElementById('ml-remove-affiliation').addEventListener('change', function() {
+      document.getElementById('ml-aff-section').hidden = !this.checked;
+    });
+
     document.getElementById('ml-aff-reason').addEventListener('change', function() {
       const otherGroup = document.getElementById('ml-aff-other-group');
       otherGroup.hidden = this.value !== 'other';
@@ -4357,17 +4359,6 @@
       const remaining = 200 - this.value.length;
       document.getElementById('ml-aff-other-char-count').textContent = remaining + ' characters remaining';
       document.getElementById('ml-aff-other-error').hidden = this.value.trim().length > 0;
-    });
-
-    // Manage License inner tab switching
-    manageLicenseModal.addEventListener('click', function(e) {
-      const tab = e.target.closest('[data-ml-tab]');
-      if (!tab) return;
-      const target = tab.dataset.mlTab;
-      manageLicenseModal.querySelectorAll('[data-ml-tab]').forEach(t => t.classList.remove('active'));
-      manageLicenseModal.querySelectorAll('.ml-tab-panel').forEach(p => p.setAttribute('hidden', ''));
-      tab.classList.add('active');
-      document.getElementById(target).removeAttribute('hidden');
     });
 
     document.addEventListener('click', function(e) {
@@ -4394,11 +4385,8 @@
       document.getElementById('ml-aff-name').textContent = licenseType;
       document.getElementById('ml-aff-submission').textContent = licenseType + ' ' + licenseNumber;
 
-      // Reset to first tab on open
-      manageLicenseModal.querySelectorAll('[data-ml-tab]').forEach(t => t.classList.remove('active'));
-      manageLicenseModal.querySelectorAll('.ml-tab-panel').forEach(p => p.setAttribute('hidden', ''));
-      manageLicenseModal.querySelector('[data-ml-tab="ml-panel-license"]').classList.add('active');
-      document.getElementById('ml-panel-license').removeAttribute('hidden');
+      document.getElementById('ml-remove-affiliation').checked = false;
+      document.getElementById('ml-aff-section').hidden = true;
 
       manageLicenseModal.removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
