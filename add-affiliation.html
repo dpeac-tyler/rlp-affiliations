@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Add Affiliation - RLP</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    label[for="rel-sarah-superior"]::before,
+    label[for="rel-sarah-superior"]::after { margin-top: 13px; }
+    label[for="rel-sarah-subordinate"]::before,
+    label[for="rel-sarah-subordinate"]::after { margin-top: 13px; }
+  </style>
 </head>
 <body>
   <div class="app-container">
@@ -161,7 +167,7 @@
               <div style="display: flex; gap: 3rem;">
                 <div class="usa-radio">
                   <input class="usa-radio__input" id="acct-search-by-name" type="radio" name="acct-search-by" value="name" checked>
-                  <label class="usa-radio__label" for="acct-search-by-name">Constituent Name</label>
+                  <label class="usa-radio__label" for="acct-search-by-name">Account Name</label>
                 </div>
                 <div class="usa-radio">
                   <input class="usa-radio__input" id="acct-search-by-address" type="radio" name="acct-search-by" value="address">
@@ -171,11 +177,11 @@
             </fieldset>
           </div>
 
-          <!-- Constituent Name fields -->
+          <!-- Account Name field -->
           <div id="acct-search-fields-name" style="margin-bottom: 1.5rem;">
-            <div class="usa-form-group" style="max-width: 40rem; margin-bottom: 0;">
-              <label class="usa-label" for="acct-search-constituent-name">Constituent Name</label>
-              <input class="usa-input" id="acct-search-constituent-name" name="acct-search-constituent-name" type="text" placeholder="Enter name to search…">
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="acct-search-constituent-name">Account Name</label>
+              <input class="usa-input" id="acct-search-constituent-name" name="acct-search-constituent-name" type="text" placeholder="Enter account name to search…">
             </div>
           </div>
 
@@ -264,7 +270,7 @@
           <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%;">
             <thead>
               <tr>
-                <th scope="col">Constituent Name</th>
+                <th scope="col" id="results-name-header">Constituent Name</th>
                 <th scope="col">Physical Address</th>
                 <th scope="col">Controls</th>
               </tr>
@@ -339,26 +345,42 @@
         </button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please define the relationship between Sarah Johnson and <strong id="rel-selected-name"></strong>.</p>
+        <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please define the relationship between Sarah Johnson and <span id="rel-selected-name"></span>.</p>
 
-        <div class="usa-form-group" id="rel-choice-group">
+        <p style="font-size: 1.6rem; margin-bottom: 0.5rem;"><strong>License Name:</strong> General Contractor License</p>
+
+        <div class="usa-form-group" id="rel-choice-group" style="margin-top: 1.5rem;">
           <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0;">
-            <legend class="usa-label" style="margin-bottom: 1.2rem;">Relationship <span class="field-required">Required</span></legend>
-            <div class="usa-radio" style="margin-bottom: 1.2rem;">
+
+            <div class="usa-radio" style="margin-bottom: 1.5rem;">
               <input class="usa-radio__input" id="rel-sarah-superior" type="radio" name="rel-choice" value="subordinate">
-              <label class="usa-radio__label" for="rel-sarah-superior"><strong>Sarah Johnson</strong> is the <strong>Superior</strong> — <span id="rel-name-a"></span> is the <strong>Subordinate</strong></label>
+              <label class="usa-radio__label" for="rel-sarah-superior" style="padding-top: 0.6rem;">
+                <span style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
+                  <span>Superior:</span><span><strong>Sarah Johnson</strong></span>
+                  <span>Subordinate:</span><span id="rel-name-a"></span>
+                </span>
+              </label>
             </div>
+
+            <hr style="border: none; border-top: 1px solid #dfe1e2; margin: 0 0 1.5rem;">
+
             <div class="usa-radio">
               <input class="usa-radio__input" id="rel-sarah-subordinate" type="radio" name="rel-choice" value="superior">
-              <label class="usa-radio__label" for="rel-sarah-subordinate"><span id="rel-name-b"></span> is the <strong>Superior</strong> — <strong>Sarah Johnson</strong> is the <strong>Subordinate</strong></label>
+              <label class="usa-radio__label" for="rel-sarah-subordinate" style="padding-top: 0.6rem;">
+                <span style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
+                  <span>Superior:</span><span><strong id="rel-name-b"></strong></span>
+                  <span>Subordinate:</span><span>Sarah Johnson</span>
+                </span>
+              </label>
             </div>
+
             <span class="usa-error-message" id="rel-choice-error" hidden>Please select a relationship.</span>
           </fieldset>
         </div>
 
         <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
-          <button type="button" class="usa-button" id="save-relationship-btn">Save</button>
-          <button type="button" class="usa-button usa-button--secondary" id="cancel-relationship-btn">Cancel</button>
+          <button type="button" class="usa-button" id="save-relationship-btn">Add Affiliation</button>
+          <button type="button" class="usa-button" style="background-color: #B50909;" id="cancel-relationship-btn">Cancel</button>
         </div>
       </div>
     </div>
@@ -371,6 +393,7 @@
         document.getElementById('search-section-license').hidden = this.value !== 'license';
         document.getElementById('search-section-account').hidden = this.value !== 'account';
         document.getElementById('affiliation-search-results').hidden = true;
+        document.getElementById('results-name-header').textContent = this.value === 'account' ? 'Account Name' : 'Constituent Name';
       });
     });
 
