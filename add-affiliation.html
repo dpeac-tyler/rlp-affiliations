@@ -228,6 +228,25 @@
 
         <!-- Search results -->
         <div id="affiliation-search-results" hidden>
+
+          <!-- Icon Key -->
+          <div class="usa-accordion usa-accordion--bordered margin-bottom-2">
+            <h3 class="usa-accordion__heading">
+              <button type="button" class="usa-accordion__button" aria-expanded="true" aria-controls="results-icon-key">
+                Icon Key
+              </button>
+            </h3>
+            <div id="results-icon-key" class="usa-accordion__content usa-prose">
+              <p class="text-bold margin-0 margin-bottom-2">Options and Control Types</p>
+              <div class="icon-key-grid">
+                <div class="icon-key-item">
+                  <img src="assets/add-affiliation.png" alt="" width="24" height="24">
+                  <span>- Add Affiliation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="table-controls" style="margin-bottom: 0.5rem;">
             <div class="table-controls__left">
               <strong>Showing 1 - 5 of 5 Entries</strong>
@@ -245,61 +264,56 @@
           <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%;">
             <thead>
               <tr>
-                <th scope="col" style="width: 5%;">Select</th>
                 <th scope="col">Constituent Name</th>
                 <th scope="col">Physical Address</th>
+                <th scope="col">Controls</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <div class="usa-radio">
-                    <input class="usa-radio__input affiliation-select-row" type="radio" id="aff-row-1" name="aff-result" value="Margaret L. Thornton">
-                    <label class="usa-radio__label" for="aff-row-1">&nbsp;</label>
-                  </div>
-                </td>
                 <td>Margaret L. Thornton</td>
                 <td>412 Birchwood Ave, Springfield, IL 62704</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Margaret L. Thornton">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
               </tr>
               <tr>
-                <td>
-                  <div class="usa-radio">
-                    <input class="usa-radio__input affiliation-select-row" type="radio" id="aff-row-2" name="aff-result" value="David R. Castillo">
-                    <label class="usa-radio__label" for="aff-row-2">&nbsp;</label>
-                  </div>
-                </td>
                 <td>David R. Castillo</td>
                 <td>89 Oakmont Dr, Columbus, OH 43215</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="David R. Castillo">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
               </tr>
               <tr>
-                <td>
-                  <div class="usa-radio">
-                    <input class="usa-radio__input affiliation-select-row" type="radio" id="aff-row-3" name="aff-result" value="Thornton &amp; Associates LLC">
-                    <label class="usa-radio__label" for="aff-row-3">&nbsp;</label>
-                  </div>
-                </td>
                 <td>Thornton &amp; Associates LLC</td>
                 <td>1750 Commerce Blvd, Suite 300, Austin, TX 78701</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Thornton &amp; Associates LLC">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
               </tr>
               <tr>
-                <td>
-                  <div class="usa-radio">
-                    <input class="usa-radio__input affiliation-select-row" type="radio" id="aff-row-4" name="aff-result" value="Patricia A. Nguyen">
-                    <label class="usa-radio__label" for="aff-row-4">&nbsp;</label>
-                  </div>
-                </td>
                 <td>Patricia A. Nguyen</td>
                 <td>33 Maple Street, Portland, OR 97201</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Patricia A. Nguyen">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
               </tr>
               <tr>
-                <td>
-                  <div class="usa-radio">
-                    <input class="usa-radio__input affiliation-select-row" type="radio" id="aff-row-5" name="aff-result" value="Blue Ridge Contracting Inc.">
-                    <label class="usa-radio__label" for="aff-row-5">&nbsp;</label>
-                  </div>
-                </td>
                 <td>Blue Ridge Contracting Inc.</td>
                 <td>601 Industrial Pkwy, Roanoke, VA 24011</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc.">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -308,7 +322,6 @@
 
       <!-- Buttons outside profile-content -->
       <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-        <button type="button" class="usa-button" id="add-selected-btn" disabled>Add Selected</button>
         <button type="button" class="usa-button usa-button--secondary" id="cancel-add-affiliation">Cancel</button>
       </div>
     </main>
@@ -390,28 +403,18 @@
       document.getElementById('acct-search-by-name').checked = true;
       document.getElementById('acct-search-fields-name').hidden = false;
       document.getElementById('acct-search-fields-address').hidden = true;
-      // Results + button state
-      document.querySelectorAll('.affiliation-select-row').forEach(function(r) { r.checked = false; });
       document.getElementById('affiliation-search-results').hidden = true;
-      document.getElementById('add-selected-btn').disabled = true;
     });
 
-    // Enable Add Selected when a result radio is selected
-    document.addEventListener('change', function(e) {
-      if (e.target.name === 'aff-result') {
-        document.getElementById('add-selected-btn').disabled = false;
-      }
-    });
-
-    // Add Selected — open relationship modal
-    document.getElementById('add-selected-btn').addEventListener('click', function() {
-      const selected = document.querySelector('input[name="aff-result"]:checked');
-      if (!selected) return;
-      const name = selected.value;
+    // Add Affiliation icon — open relationship modal
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('.aff-add-btn');
+      if (!btn) return;
+      e.preventDefault();
+      const name = btn.dataset.name;
       document.getElementById('rel-selected-name').textContent = name;
       document.getElementById('rel-name-a').textContent = name;
       document.getElementById('rel-name-b').textContent = name;
-      // Reset modal state
       document.querySelectorAll('input[name="rel-choice"]').forEach(function(r) { r.checked = false; });
       document.getElementById('rel-choice-error').hidden = true;
       document.getElementById('rel-choice-group').classList.remove('usa-form-group--error');
