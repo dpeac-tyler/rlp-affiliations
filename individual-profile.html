@@ -217,6 +217,10 @@
                   <img src="assets/create-invoice.png" alt="" width="24" height="24">
                   <span>- Create Invoice</span>
                 </div>
+                <div class="icon-key-item">
+                  <img src="assets/add-affiliation.png" alt="" width="24" height="24">
+                  <span>- Add Affiliation</span>
+                </div>
               </div>
             </div>
           </div>
@@ -251,7 +255,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Eligibility flag test</td>
+                  <td>General Contractor License</td>
                   <td>00000004</td>
                   <td>Original (One)</td>
                   <td>12/31/2022</td>
@@ -275,6 +279,9 @@
                     </a>
                     <a href="#" class="icon-button" aria-label="View Submission">
                       <img src="assets/view-submission.png" alt="" width="30" height="30">
+                    </a>
+                    <a href="add-affiliation.html" class="icon-button" aria-label="Add Affiliation">
+                      <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                     </a>
                   </td>
                 </tr>
@@ -796,8 +803,6 @@
                 </div>
               </div>
             </div>
-
-            <button type="button" class="usa-button margin-top-2" id="add-affiliation-btn">Add Affiliation</button>
 
             <!-- Affiliations Sub-tabs -->
             <div class="horizontal-tabs">
@@ -2458,6 +2463,23 @@
       }
     }
 
+    // Check URL for affiliations subtab parameter
+    const activeSubtab = urlParams.get('subtab');
+    if (activeSubtab && (activeTab === 'affiliations' || !activeTab)) {
+      const subtabBtn = document.querySelector('[data-affiliations-tab="' + activeSubtab + '"]');
+      const subtabPanel = document.getElementById(activeSubtab + '-subtab');
+      if (subtabBtn && subtabPanel) {
+        document.querySelectorAll('[data-affiliations-tab]').forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.affiliations-subtab-content').forEach(function(p) {
+          p.classList.remove('active');
+          p.setAttribute('hidden', '');
+        });
+        subtabBtn.classList.add('active');
+        subtabPanel.classList.add('active');
+        subtabPanel.removeAttribute('hidden');
+      }
+    }
+
     // Helper function to capitalize first letter
     function capitalizeFirst(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);
@@ -4093,6 +4115,11 @@
       localStorage.removeItem('showEmailNotification');
     }
 
+    if (localStorage.getItem('showAffiliationNotification') === 'true') {
+      localStorage.removeItem('showAffiliationNotification');
+      showSuccessAlert('Affiliation Added Successfully.');
+    }
+
     // Return to Letters tab after cancel from edit-letter
     if (localStorage.getItem('returnToLettersTab') === 'true') {
       localStorage.removeItem('returnToLettersTab');
@@ -4170,32 +4197,6 @@
       if (e.target === resendEmailModal) closeResendEmailModal();
     });
 
-    // Add Affiliation Modal
-    const addAffiliationBtn = document.getElementById('add-affiliation-btn');
-    const addAffiliationModal = document.getElementById('add-affiliation-modal');
-    const closeAddAffiliationModal = document.getElementById('close-add-affiliation-modal');
-
-    addAffiliationBtn.addEventListener('click', function() {
-      addAffiliationModal.removeAttribute('hidden');
-      document.body.style.overflow = 'hidden';
-    });
-
-    closeAddAffiliationModal.addEventListener('click', function() {
-      addAffiliationModal.setAttribute('hidden', '');
-      document.body.style.overflow = '';
-    });
-
-    document.getElementById('cancel-add-affiliation').addEventListener('click', function() {
-      addAffiliationModal.setAttribute('hidden', '');
-      document.body.style.overflow = '';
-    });
-
-    addAffiliationModal.addEventListener('click', function(e) {
-      if (e.target === addAffiliationModal) {
-        addAffiliationModal.setAttribute('hidden', '');
-        document.body.style.overflow = '';
-      }
-    });
 
     // Remove Affiliation Modal
     const removeAffiliationModal = document.getElementById('remove-affiliation-modal');
