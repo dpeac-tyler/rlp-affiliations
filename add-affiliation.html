@@ -267,18 +267,26 @@
               </select>
             </div>
           </div>
-          <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%;">
+
+          <!-- License results table -->
+          <table id="results-table-license" class="usa-table usa-table--borderless usa-table--striped" style="width: 100%;">
             <thead>
               <tr>
-                <th scope="col" id="results-name-header">Constituent Name</th>
-                <th scope="col">Physical Address</th>
+                <th scope="col">Constituent Name</th>
+                <th scope="col">License Number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">Expiration Date</th>
                 <th scope="col">Controls</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>Margaret L. Thornton</td>
-                <td>412 Birchwood Ave, Springfield, IL 62704</td>
+                <td>00000021</td>
+                <td>Active</td>
+                <td>03/15/2021</td>
+                <td>03/14/2026</td>
                 <td style="white-space: nowrap;">
                   <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Margaret L. Thornton">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
@@ -287,13 +295,65 @@
               </tr>
               <tr>
                 <td>David R. Castillo</td>
-                <td>89 Oakmont Dr, Columbus, OH 43215</td>
+                <td>00000034</td>
+                <td>Active</td>
+                <td>07/01/2022</td>
+                <td>06/30/2027</td>
                 <td style="white-space: nowrap;">
                   <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="David R. Castillo">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
               </tr>
+              <tr>
+                <td>Thornton &amp; Associates LLC</td>
+                <td>00000047</td>
+                <td>Expired</td>
+                <td>01/10/2020</td>
+                <td>01/09/2025</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Thornton &amp; Associates LLC">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Patricia A. Nguyen</td>
+                <td>00000058</td>
+                <td>Active</td>
+                <td>11/20/2023</td>
+                <td>11/19/2028</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Patricia A. Nguyen">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Blue Ridge Contracting Inc.</td>
+                <td>00000062</td>
+                <td>Active</td>
+                <td>05/05/2022</td>
+                <td>05/04/2027</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc.">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Account results table -->
+          <table id="results-table-account" class="usa-table usa-table--borderless usa-table--striped" style="width: 100%;" hidden>
+            <thead>
+              <tr>
+                <th scope="col">Account Name</th>
+                <th scope="col">Physical Address</th>
+                <th scope="col">Controls</th>
+              </tr>
+            </thead>
+            <tbody>
               <tr>
                 <td>Thornton &amp; Associates LLC</td>
                 <td>1750 Commerce Blvd, Suite 300, Austin, TX 78701</td>
@@ -304,19 +364,37 @@
                 </td>
               </tr>
               <tr>
-                <td>Patricia A. Nguyen</td>
-                <td>33 Maple Street, Portland, OR 97201</td>
+                <td>Blue Ridge Contracting Inc.</td>
+                <td>601 Industrial Pkwy, Roanoke, VA 24011</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Patricia A. Nguyen">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc.">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
               </tr>
               <tr>
-                <td>Blue Ridge Contracting Inc.</td>
-                <td>601 Industrial Pkwy, Roanoke, VA 24011</td>
+                <td>Sunrise Building Group</td>
+                <td>88 Harbor View Dr, Charleston, SC 29401</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc.">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Sunrise Building Group">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Castillo Construction Co.</td>
+                <td>412 Industrial Loop, Phoenix, AZ 85001</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Castillo Construction Co.">
+                    <img src="assets/add-affiliation.png" alt="" width="30" height="30">
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td>Nguyen &amp; Partners LLC</td>
+                <td>200 Westlake Ave N, Seattle, WA 98109</td>
+                <td style="white-space: nowrap;">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Nguyen &amp; Partners LLC">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -387,13 +465,15 @@
   </div>
 
   <script>
-    // Affiliating To toggle — switch between license and account search sections
+    // Affiliating To toggle — switch search sections and result tables
     document.querySelectorAll('input[name="affiliating-to"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
-        document.getElementById('search-section-license').hidden = this.value !== 'license';
-        document.getElementById('search-section-account').hidden = this.value !== 'account';
+        var isLicense = this.value === 'license';
+        document.getElementById('search-section-license').hidden = !isLicense;
+        document.getElementById('search-section-account').hidden = isLicense;
         document.getElementById('affiliation-search-results').hidden = true;
-        document.getElementById('results-name-header').textContent = this.value === 'account' ? 'Account Name' : 'Constituent Name';
+        document.getElementById('results-table-license').hidden = !isLicense;
+        document.getElementById('results-table-account').hidden = isLicense;
       });
     });
 
