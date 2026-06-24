@@ -11,15 +11,6 @@
     label[for="rel-sarah-subordinate"]::before,
     label[for="rel-sarah-subordinate"]::after { margin-top: 13px; }
 
-    .usa-radio__input:disabled + .usa-radio__label {
-      color: #a9aeb1;
-      cursor: not-allowed;
-    }
-    .usa-radio__input:disabled + .usa-radio__label::before {
-      background-color: #f0f0f0;
-      border-color: #c9c9c9;
-      cursor: not-allowed;
-    }
   </style>
 </head>
 <body>
@@ -176,23 +167,6 @@
             <option>Franchise</option>
             <option>School District</option>
           </select>
-        </div>
-
-        <!-- Affiliating To radios -->
-        <div class="usa-form-group" style="margin-bottom: 2rem;">
-          <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0;">
-            <legend class="usa-label" style="margin-bottom: 0.8rem;">Affiliating To <span class="field-required">Required</span></legend>
-            <div style="display: flex; gap: 3rem;">
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="affiliating-to-license" type="radio" name="affiliating-to" value="license">
-                <label class="usa-radio__label" for="affiliating-to-license">License</label>
-              </div>
-              <div class="usa-radio">
-                <input class="usa-radio__input" id="affiliating-to-account" type="radio" name="affiliating-to" value="account">
-                <label class="usa-radio__label" for="affiliating-to-account">Account</label>
-              </div>
-            </div>
-          </fieldset>
         </div>
 
         <!-- License search fields -->
@@ -521,38 +495,12 @@
         document.getElementById('superior-license-type-group').hidden = this.value !== 'license';
         document.getElementById('superior-account-name-group').hidden = this.value !== 'account';
 
-        var licenseRadio  = document.getElementById('affiliating-to-license');
-        var accountRadio  = document.getElementById('affiliating-to-account');
-
-        // Disable the opposite Affiliating To option
-        licenseRadio.disabled = this.value === 'account';
-        accountRadio.disabled = this.value === 'license';
-
-        // If the now-disabled option was selected, clear it and hide search sections
-        if (licenseRadio.disabled && licenseRadio.checked) {
-          licenseRadio.checked = false;
-          document.getElementById('search-section-license').hidden = true;
-          document.getElementById('results-table-license').hidden = true;
-          document.getElementById('affiliation-search-results').hidden = true;
-        }
-        if (accountRadio.disabled && accountRadio.checked) {
-          accountRadio.checked = false;
-          document.getElementById('search-section-account').hidden = true;
-          document.getElementById('results-table-account').hidden = true;
-          document.getElementById('affiliation-search-results').hidden = true;
-        }
-      });
-    });
-
-    // Affiliating To toggle — switch search sections and result tables
-    document.querySelectorAll('input[name="affiliating-to"]').forEach(function(radio) {
-      radio.addEventListener('change', function() {
         var isLicense = this.value === 'license';
         document.getElementById('search-section-license').hidden = !isLicense;
         document.getElementById('search-section-account').hidden = isLicense;
-        document.getElementById('affiliation-search-results').hidden = true;
         document.getElementById('results-table-license').hidden = !isLicense;
         document.getElementById('results-table-account').hidden = isLicense;
+        document.getElementById('affiliation-search-results').hidden = true;
       });
     });
 
