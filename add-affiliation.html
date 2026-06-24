@@ -10,6 +10,16 @@
     label[for="rel-sarah-superior"]::after { margin-top: 13px; }
     label[for="rel-sarah-subordinate"]::before,
     label[for="rel-sarah-subordinate"]::after { margin-top: 13px; }
+
+    .usa-radio__input:disabled + .usa-radio__label {
+      color: #a9aeb1;
+      cursor: not-allowed;
+    }
+    .usa-radio__input:disabled + .usa-radio__label::before {
+      background-color: #f0f0f0;
+      border-color: #c9c9c9;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
@@ -127,13 +137,54 @@
 
         <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please use the below search fields to find the license or account to whom you wish to affiliate.</p>
 
+        <!-- Affiliation Type radios -->
+        <div class="usa-form-group" style="margin-bottom: 2rem;">
+          <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0;">
+            <legend class="usa-label" style="margin-bottom: 0.8rem;">Affiliation Type <span class="field-required">Required</span></legend>
+            <div style="display: flex; gap: 3rem;">
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="affiliation-type-license" type="radio" name="affiliation-type" value="license">
+                <label class="usa-radio__label" for="affiliation-type-license">License</label>
+              </div>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="affiliation-type-account" type="radio" name="affiliation-type" value="account">
+                <label class="usa-radio__label" for="affiliation-type-account">Account</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Superior License Types (shown when Affiliation Type = License) -->
+        <div id="superior-license-type-group" class="usa-form-group" style="margin-bottom: 2rem;" hidden>
+          <label class="usa-label" for="superior-license-type">Superior License Types <span class="field-required">Required</span></label>
+          <select class="usa-select" id="superior-license-type" name="superior-license-type">
+            <option value="">Please Select</option>
+            <option>Real Estate Broker License</option>
+            <option>Mortgage License</option>
+            <option>Principal License</option>
+            <option>Branch License</option>
+          </select>
+        </div>
+
+        <!-- Superior Account Names (shown when Affiliation Type = Account) -->
+        <div id="superior-account-name-group" class="usa-form-group" style="margin-bottom: 2rem;" hidden>
+          <label class="usa-label" for="superior-account-name">Superior Account Names <span class="field-required">Required</span></label>
+          <select class="usa-select" id="superior-account-name" name="superior-account-name">
+            <option value="">Please Select</option>
+            <option>Corporate</option>
+            <option>Manager</option>
+            <option>Franchise</option>
+            <option>School District</option>
+          </select>
+        </div>
+
         <!-- Affiliating To radios -->
         <div class="usa-form-group" style="margin-bottom: 2rem;">
           <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0;">
             <legend class="usa-label" style="margin-bottom: 0.8rem;">Affiliating To <span class="field-required">Required</span></legend>
             <div style="display: flex; gap: 3rem;">
               <div class="usa-radio">
-                <input class="usa-radio__input" id="affiliating-to-license" type="radio" name="affiliating-to" value="license" checked>
+                <input class="usa-radio__input" id="affiliating-to-license" type="radio" name="affiliating-to" value="license">
                 <label class="usa-radio__label" for="affiliating-to-license">License</label>
               </div>
               <div class="usa-radio">
@@ -145,7 +196,7 @@
         </div>
 
         <!-- License search fields -->
-        <div id="search-section-license">
+        <div id="search-section-license" hidden>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 1.5rem;">
             <div class="usa-form-group" style="margin-bottom: 0;">
               <label class="usa-label" for="search-constituent-name">Constituent Name</label>
@@ -154,6 +205,29 @@
             <div class="usa-form-group" style="margin-bottom: 0;">
               <label class="usa-label" for="search-license-number">License Number</label>
               <input class="usa-input" id="search-license-number" name="search-license-number" type="text" placeholder="Enter license number…">
+            </div>
+          </div>
+          <div style="display: flex; gap: 2rem; margin-bottom: 1.5rem;">
+            <div class="usa-form-group" style="margin-bottom: 0; flex: 1;">
+              <label class="usa-label" for="search-license-status">License Status</label>
+              <select class="usa-select" id="search-license-status" name="search-license-status">
+                <option value="">Please Select</option>
+                <option>Active</option>
+                <option>Expired</option>
+                <option>Suspended</option>
+                <option>Revoked</option>
+                <option>Pending</option>
+              </select>
+            </div>
+            <div style="display: flex; gap: 2rem; flex: 1; flex-wrap: nowrap;">
+              <div class="usa-form-group" style="margin-bottom: 0; flex: 1; min-width: 0;">
+                <label class="usa-label" for="search-start-date">Start Date</label>
+                <input class="usa-input" id="search-start-date" name="search-start-date" type="date" style="width: 100%;">
+              </div>
+              <div class="usa-form-group" style="margin-bottom: 0; flex: 1; min-width: 0;">
+                <label class="usa-label" for="search-expiration-date">Expiration Date</label>
+                <input class="usa-input" id="search-expiration-date" name="search-expiration-date" type="date" style="width: 100%;">
+              </div>
             </div>
           </div>
         </div>
@@ -411,11 +485,11 @@
     </main>
   </div>
 
-  <!-- Relationship Modal -->
+  <!-- Confirmation Modal -->
   <div id="relationship-modal" class="modal-overlay" hidden>
     <div class="modal-content" style="max-width: 640px;">
       <div class="modal-header">
-        <h2 class="modal-title">Define Relationship</h2>
+        <h2 class="modal-title">Confirm Relationship</h2>
         <button type="button" class="modal-close" id="close-relationship-modal" aria-label="Close modal">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -423,37 +497,13 @@
         </button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please define the relationship between Sarah Johnson and <span id="rel-selected-name"></span>.</p>
+        <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please confirm the affiliation relationship below.</p>
 
-        <p style="font-size: 1.6rem; margin-bottom: 0.5rem;"><strong>License Name:</strong> General Contractor License</p>
+        <p style="font-size: 1.6rem; margin-bottom: 1.5rem;"><strong>License Name:</strong> General Contractor License</p>
 
-        <div class="usa-form-group" id="rel-choice-group" style="margin-top: 1.5rem;">
-          <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0;">
-
-            <div class="usa-radio" style="margin-bottom: 1.5rem;">
-              <input class="usa-radio__input" id="rel-sarah-superior" type="radio" name="rel-choice" value="subordinate">
-              <label class="usa-radio__label" for="rel-sarah-superior" style="padding-top: 0.6rem;">
-                <span style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
-                  <span>Superior:</span><span><strong>Sarah Johnson</strong></span>
-                  <span>Subordinate:</span><span id="rel-name-a"></span>
-                </span>
-              </label>
-            </div>
-
-            <hr style="border: none; border-top: 1px solid #dfe1e2; margin: 0 0 1.5rem;">
-
-            <div class="usa-radio">
-              <input class="usa-radio__input" id="rel-sarah-subordinate" type="radio" name="rel-choice" value="superior">
-              <label class="usa-radio__label" for="rel-sarah-subordinate" style="padding-top: 0.6rem;">
-                <span style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
-                  <span>Superior:</span><span><strong id="rel-name-b"></strong></span>
-                  <span>Subordinate:</span><span>Sarah Johnson</span>
-                </span>
-              </label>
-            </div>
-
-            <span class="usa-error-message" id="rel-choice-error" hidden>Please select a relationship.</span>
-          </fieldset>
+        <div style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
+          <span>Superior:</span><span><strong id="rel-name-superior"></strong></span>
+          <span>Subordinate:</span><span>Sarah Johnson</span>
         </div>
 
         <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
@@ -465,6 +515,35 @@
   </div>
 
   <script>
+    // Affiliation Type toggle — show/hide conditional fields and constrain Affiliating To
+    document.querySelectorAll('input[name="affiliation-type"]').forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        document.getElementById('superior-license-type-group').hidden = this.value !== 'license';
+        document.getElementById('superior-account-name-group').hidden = this.value !== 'account';
+
+        var licenseRadio  = document.getElementById('affiliating-to-license');
+        var accountRadio  = document.getElementById('affiliating-to-account');
+
+        // Disable the opposite Affiliating To option
+        licenseRadio.disabled = this.value === 'account';
+        accountRadio.disabled = this.value === 'license';
+
+        // If the now-disabled option was selected, clear it and hide search sections
+        if (licenseRadio.disabled && licenseRadio.checked) {
+          licenseRadio.checked = false;
+          document.getElementById('search-section-license').hidden = true;
+          document.getElementById('results-table-license').hidden = true;
+          document.getElementById('affiliation-search-results').hidden = true;
+        }
+        if (accountRadio.disabled && accountRadio.checked) {
+          accountRadio.checked = false;
+          document.getElementById('search-section-account').hidden = true;
+          document.getElementById('results-table-account').hidden = true;
+          document.getElementById('affiliation-search-results').hidden = true;
+        }
+      });
+    });
+
     // Affiliating To toggle — switch search sections and result tables
     document.querySelectorAll('input[name="affiliating-to"]').forEach(function(radio) {
       radio.addEventListener('change', function() {
@@ -496,6 +575,9 @@
       // License fields
       document.getElementById('search-constituent-name').value = '';
       document.getElementById('search-license-number').value = '';
+      document.getElementById('search-license-status').value = '';
+      document.getElementById('search-start-date').value = '';
+      document.getElementById('search-expiration-date').value = '';
       // Account fields
       document.getElementById('acct-search-constituent-name').value = '';
       document.getElementById('acct-search-address1').value = '';
@@ -509,18 +591,12 @@
       document.getElementById('affiliation-search-results').hidden = true;
     });
 
-    // Add Affiliation icon — open relationship modal
+    // Add Affiliation icon — open confirmation modal
     document.addEventListener('click', function(e) {
       const btn = e.target.closest('.aff-add-btn');
       if (!btn) return;
       e.preventDefault();
-      const name = btn.dataset.name;
-      document.getElementById('rel-selected-name').textContent = name;
-      document.getElementById('rel-name-a').textContent = name;
-      document.getElementById('rel-name-b').textContent = name;
-      document.querySelectorAll('input[name="rel-choice"]').forEach(function(r) { r.checked = false; });
-      document.getElementById('rel-choice-error').hidden = true;
-      document.getElementById('rel-choice-group').classList.remove('usa-form-group--error');
+      document.getElementById('rel-name-superior').textContent = btn.dataset.name;
       document.getElementById('relationship-modal').removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
     });
@@ -536,16 +612,10 @@
       if (e.target === this) closeRelationshipModal();
     });
 
-    // Relationship modal — save
+    // Confirmation modal — save
     document.getElementById('save-relationship-btn').addEventListener('click', function() {
-      const choice = document.querySelector('input[name="rel-choice"]:checked');
-      if (!choice) {
-        document.getElementById('rel-choice-error').hidden = false;
-        document.getElementById('rel-choice-group').classList.add('usa-form-group--error');
-        return;
-      }
       localStorage.setItem('showAffiliationNotification', 'true');
-      window.location.href = 'individual-profile.html?tab=affiliations&subtab=' + choice.value;
+      window.location.href = 'individual-profile.html?tab=affiliations&subtab=superior';
     });
 
     // Cancel
