@@ -385,7 +385,7 @@
                 <td>Thornton &amp; Associates LLC</td>
                 <td>1750 Commerce Blvd, Suite 300, Austin, TX 78701</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Thornton &amp; Associates LLC">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Thornton &amp; Associates LLC" data-address="1750 Commerce Blvd, Suite 300, Austin, TX 78701">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -394,7 +394,7 @@
                 <td>Blue Ridge Contracting Inc.</td>
                 <td>601 Industrial Pkwy, Roanoke, VA 24011</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc.">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc." data-address="601 Industrial Pkwy, Roanoke, VA 24011">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -403,7 +403,7 @@
                 <td>Sunrise Building Group</td>
                 <td>88 Harbor View Dr, Charleston, SC 29401</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Sunrise Building Group">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Sunrise Building Group" data-address="88 Harbor View Dr, Charleston, SC 29401">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -412,7 +412,7 @@
                 <td>Castillo Construction Co.</td>
                 <td>412 Industrial Loop, Phoenix, AZ 85001</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Castillo Construction Co.">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Castillo Construction Co." data-address="412 Industrial Loop, Phoenix, AZ 85001">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -421,7 +421,7 @@
                 <td>Nguyen &amp; Partners LLC</td>
                 <td>200 Westlake Ave N, Seattle, WA 98109</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Nguyen &amp; Partners LLC">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Nguyen &amp; Partners LLC" data-address="200 Westlake Ave N, Seattle, WA 98109">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -495,12 +495,41 @@
 
         <!-- Account layout -->
         <div id="rel-layout-account" hidden style="margin-bottom: 2rem;">
-          <div style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
-            <span>Superior:</span>
-            <span><strong id="rel-sup-acct-name"></strong></span>
-            <span>Subordinate:</span>
-            <span>Sarah Johnson &mdash; General Contractor License (No. 00000004)</span>
-          </div>
+          <h3 style="font-size: 1.6rem; font-weight: 700; color: #1a4480; border-bottom: 2px solid #dfe1e2; padding-bottom: 8px; margin: 0 0 1rem;">Subordinate License</h3>
+          <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%; margin-bottom: 1.5rem;">
+            <thead>
+              <tr>
+                <th scope="col">Constituent Name</th>
+                <th scope="col">License Type</th>
+                <th scope="col">License Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sarah Johnson</td>
+                <td>General Contractor License</td>
+                <td>00000004</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 style="font-size: 1.9rem; font-weight: 700; margin: 20px 0; text-align: center;">Will be affiliated to</h3>
+
+          <h3 style="font-size: 1.6rem; font-weight: 700; color: #1a4480; border-bottom: 2px solid #dfe1e2; padding-bottom: 8px; margin: 0 0 1rem;">Superior Account</h3>
+          <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%; margin-bottom: 0;">
+            <thead>
+              <tr>
+                <th scope="col">Constituent Name</th>
+                <th scope="col">Physical Address</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span id="rel-sup-acct-name"></span></td>
+                <td><span id="rel-sup-acct-address"></span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
@@ -572,6 +601,7 @@
         document.getElementById('rel-sup-lic-type').textContent = licTypeText;
       } else {
         document.getElementById('rel-sup-acct-name').textContent = btn.dataset.name;
+        document.getElementById('rel-sup-acct-address').textContent = btn.dataset.address || '';
       }
 
       document.getElementById('relationship-modal').removeAttribute('hidden');
