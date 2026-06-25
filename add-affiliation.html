@@ -181,95 +181,86 @@
               <input class="usa-input" id="search-license-number" name="search-license-number" type="text" placeholder="Enter license number…">
             </div>
           </div>
-          <div style="display: flex; gap: 2rem; margin-bottom: 1.5rem;">
-            <div class="usa-form-group" style="margin-bottom: 0; flex: 1;">
-              <label class="usa-label" for="search-license-status">License Status</label>
-              <select class="usa-select" id="search-license-status" name="search-license-status">
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="lic-search-address1">Physical Address 1</label>
+              <input class="usa-input" id="lic-search-address1" name="lic-search-address1" type="text" placeholder="123 Main St">
+            </div>
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="lic-search-address2">Physical Address 2</label>
+              <input class="usa-input" id="lic-search-address2" name="lic-search-address2" type="text" placeholder="Apt, Suite, etc.">
+            </div>
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="lic-search-city">Physical City</label>
+              <input class="usa-input" id="lic-search-city" name="lic-search-city" type="text" placeholder="City">
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="lic-search-state">Physical State</label>
+              <select class="usa-select" id="lic-search-state" name="lic-search-state">
                 <option value="">Please Select</option>
-                <option>Active</option>
-                <option>Expired</option>
-                <option>Suspended</option>
-                <option>Revoked</option>
-                <option>Pending</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+                <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+                <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+                <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+                <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+                <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+                <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+                <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
               </select>
             </div>
-            <div style="display: flex; gap: 2rem; flex: 1; flex-wrap: nowrap;">
-              <div class="usa-form-group" style="margin-bottom: 0; flex: 1; min-width: 0;">
-                <label class="usa-label" for="search-start-date">Start Date</label>
-                <input class="usa-input" id="search-start-date" name="search-start-date" type="date" style="width: 100%;">
-              </div>
-              <div class="usa-form-group" style="margin-bottom: 0; flex: 1; min-width: 0;">
-                <label class="usa-label" for="search-expiration-date">Expiration Date</label>
-                <input class="usa-input" id="search-expiration-date" name="search-expiration-date" type="date" style="width: 100%;">
-              </div>
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="lic-search-zip">Physical ZIP Code</label>
+              <input class="usa-input" id="lic-search-zip" name="lic-search-zip" type="text" placeholder="00000">
             </div>
           </div>
         </div>
 
-        <!-- Account search fields (placeholder — fields to be updated) -->
+        <!-- Account search fields -->
         <div id="search-section-account" hidden>
-          <!-- Search By radios -->
-          <div class="usa-form-group" style="margin-bottom: 2rem;">
-            <fieldset class="usa-fieldset" style="border: none; padding: 0; margin: 0;">
-              <legend class="usa-label" style="margin-bottom: 0.8rem;">Search By</legend>
-              <div style="display: flex; gap: 3rem;">
-                <div class="usa-radio">
-                  <input class="usa-radio__input" id="acct-search-by-name" type="radio" name="acct-search-by" value="name" checked>
-                  <label class="usa-radio__label" for="acct-search-by-name">Account Name</label>
-                </div>
-                <div class="usa-radio">
-                  <input class="usa-radio__input" id="acct-search-by-address" type="radio" name="acct-search-by" value="address">
-                  <label class="usa-radio__label" for="acct-search-by-address">Physical Address</label>
-                </div>
-              </div>
-            </fieldset>
-          </div>
-
-          <!-- Account Name field -->
-          <div id="acct-search-fields-name" style="margin-bottom: 1.5rem;">
+          <div style="margin-bottom: 1.5rem;">
             <div class="usa-form-group" style="margin-bottom: 0;">
-              <label class="usa-label" for="acct-search-constituent-name">Account Name</label>
-              <input class="usa-input" id="acct-search-constituent-name" name="acct-search-constituent-name" type="text" placeholder="Enter account name to search…">
+              <label class="usa-label" for="acct-search-constituent-name">Constituent Name</label>
+              <input class="usa-input" id="acct-search-constituent-name" name="acct-search-constituent-name" type="text" placeholder="Enter name to search…">
             </div>
           </div>
-
-          <!-- Physical Address fields (hidden by default) -->
-          <div id="acct-search-fields-address" hidden style="margin-bottom: 1.5rem;">
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
-              <div class="usa-form-group" style="margin-bottom: 0;">
-                <label class="usa-label" for="acct-search-address1">Address 1</label>
-                <input class="usa-input" id="acct-search-address1" name="acct-search-address1" type="text" placeholder="123 Main St">
-              </div>
-              <div class="usa-form-group" style="margin-bottom: 0;">
-                <label class="usa-label" for="acct-search-address2">Address 2</label>
-                <input class="usa-input" id="acct-search-address2" name="acct-search-address2" type="text" placeholder="Apt, Suite, etc.">
-              </div>
-              <div class="usa-form-group" style="margin-bottom: 0;">
-                <label class="usa-label" for="acct-search-city">City</label>
-                <input class="usa-input" id="acct-search-city" name="acct-search-city" type="text" placeholder="City">
-              </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="acct-search-address1">Physical Address 1</label>
+              <input class="usa-input" id="acct-search-address1" name="acct-search-address1" type="text" placeholder="123 Main St">
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem;">
-              <div class="usa-form-group" style="margin-bottom: 0;">
-                <label class="usa-label" for="acct-search-state">State</label>
-                <select class="usa-select" id="acct-search-state" name="acct-search-state">
-                  <option value="">Please Select</option>
-                  <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
-                  <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
-                  <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
-                  <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
-                  <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
-                  <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
-                  <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
-                  <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
-                  <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
-                  <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
-                </select>
-              </div>
-              <div class="usa-form-group" style="margin-bottom: 0;">
-                <label class="usa-label" for="acct-search-zip">ZIP Code</label>
-                <input class="usa-input" id="acct-search-zip" name="acct-search-zip" type="text" placeholder="00000">
-              </div>
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="acct-search-address2">Physical Address 2</label>
+              <input class="usa-input" id="acct-search-address2" name="acct-search-address2" type="text" placeholder="Apt, Suite, etc.">
+            </div>
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="acct-search-city">Physical City</label>
+              <input class="usa-input" id="acct-search-city" name="acct-search-city" type="text" placeholder="City">
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="acct-search-state">Physical State</label>
+              <select class="usa-select" id="acct-search-state" name="acct-search-state">
+                <option value="">Please Select</option>
+                <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+                <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+                <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+                <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+                <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+                <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+                <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+                <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+                <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+                <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+              </select>
+            </div>
+            <div class="usa-form-group" style="margin-bottom: 0;">
+              <label class="usa-label" for="acct-search-zip">Physical ZIP Code</label>
+              <input class="usa-input" id="acct-search-zip" name="acct-search-zip" type="text" placeholder="00000">
             </div>
           </div>
         </div>
@@ -322,9 +313,7 @@
               <tr>
                 <th scope="col">Constituent Name</th>
                 <th scope="col">License Number</th>
-                <th scope="col">Status</th>
-                <th scope="col">Start Date</th>
-                <th scope="col">Expiration Date</th>
+                <th scope="col">Physical Address</th>
                 <th scope="col">Controls</th>
               </tr>
             </thead>
@@ -332,9 +321,7 @@
               <tr>
                 <td>Margaret L. Thornton</td>
                 <td>00000021</td>
-                <td>Active</td>
-                <td>03/15/2021</td>
-                <td>03/14/2026</td>
+                <td>4820 Birchwood Ln, Denver, CO 80203</td>
                 <td style="white-space: nowrap;">
                   <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Margaret L. Thornton" data-license-number="00000021">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
@@ -344,9 +331,7 @@
               <tr>
                 <td>David R. Castillo</td>
                 <td>00000034</td>
-                <td>Active</td>
-                <td>07/01/2022</td>
-                <td>06/30/2027</td>
+                <td>1102 Sunset Ridge Rd, Albuquerque, NM 87104</td>
                 <td style="white-space: nowrap;">
                   <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="David R. Castillo" data-license-number="00000034">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
@@ -356,9 +341,7 @@
               <tr>
                 <td>Thornton &amp; Associates LLC</td>
                 <td>00000047</td>
-                <td>Expired</td>
-                <td>01/10/2020</td>
-                <td>01/09/2025</td>
+                <td>1750 Commerce Blvd, Suite 300, Austin, TX 78701</td>
                 <td style="white-space: nowrap;">
                   <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Thornton &amp; Associates LLC" data-license-number="00000047">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
@@ -368,9 +351,7 @@
               <tr>
                 <td>Patricia A. Nguyen</td>
                 <td>00000058</td>
-                <td>Active</td>
-                <td>11/20/2023</td>
-                <td>11/19/2028</td>
+                <td>309 Magnolia St, Baton Rouge, LA 70801</td>
                 <td style="white-space: nowrap;">
                   <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Patricia A. Nguyen" data-license-number="00000058">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
@@ -380,9 +361,7 @@
               <tr>
                 <td>Blue Ridge Contracting Inc.</td>
                 <td>00000062</td>
-                <td>Active</td>
-                <td>05/05/2022</td>
-                <td>05/04/2027</td>
+                <td>601 Industrial Pkwy, Roanoke, VA 24011</td>
                 <td style="white-space: nowrap;">
                   <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc." data-license-number="00000062">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
@@ -396,7 +375,7 @@
           <table id="results-table-account" class="usa-table usa-table--borderless usa-table--striped" style="width: 100%;" hidden>
             <thead>
               <tr>
-                <th scope="col">Account Name</th>
+                <th scope="col">Constituent Name</th>
                 <th scope="col">Physical Address</th>
                 <th scope="col">Controls</th>
               </tr>
@@ -461,9 +440,9 @@
 
   <!-- Confirmation Modal -->
   <div id="relationship-modal" class="modal-overlay" hidden>
-    <div class="modal-content" style="max-width: 640px;">
+    <div class="modal-content" style="max-width: 1000px;">
       <div class="modal-header">
-        <h2 class="modal-title">Confirm Relationship</h2>
+        <h2 class="modal-title">Confirm Affiliation</h2>
         <button type="button" class="modal-close" id="close-relationship-modal" aria-label="Close modal">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -471,24 +450,57 @@
         </button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 1.6rem; margin-bottom: 2rem;">Please confirm the affiliation relationship below.</p>
+        <p style="font-size: 1.6rem; margin-bottom: 2rem;">You're about to create the following affiliation.</p>
 
-        <p style="font-size: 1.6rem; margin-bottom: 1.5rem;"><strong>License Name:</strong> General Contractor License</p>
+        <!-- License layout -->
+        <div id="rel-layout-license" hidden style="margin-bottom: 2rem;">
+          <h3 style="font-size: 1.6rem; font-weight: 700; color: #1a4480; border-bottom: 2px solid #dfe1e2; padding-bottom: 8px; margin: 0 0 1rem;">Subordinate License</h3>
+          <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%; margin-bottom: 1.5rem;">
+            <thead>
+              <tr>
+                <th scope="col">Constituent Name</th>
+                <th scope="col">License Type</th>
+                <th scope="col">License Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sarah Johnson</td>
+                <td>General Contractor License</td>
+                <td>00000004</td>
+              </tr>
+            </tbody>
+          </table>
 
-        <div style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
-          <span>Superior:</span>
-          <span>
-            <!-- License superior -->
-            <span id="rel-superior-license" hidden>
-              <strong id="rel-superior-license-name"></strong> &mdash; License No. <span id="rel-superior-license-number"></span>
-            </span>
-            <!-- Account superior -->
-            <span id="rel-superior-account" hidden>
-              <strong id="rel-superior-account-name"></strong>
-            </span>
-          </span>
-          <span>Subordinate:</span>
-          <span>Sarah Johnson &mdash; General Contractor License (No. 00000004)</span>
+          <h3 style="font-size: 1.9rem; font-weight: 700; margin: 20px 0; text-align: center;">Will be affiliated to</h3>
+
+          <h3 style="font-size: 1.6rem; font-weight: 700; color: #1a4480; border-bottom: 2px solid #dfe1e2; padding-bottom: 8px; margin: 0 0 1rem;">Superior License</h3>
+          <table class="usa-table usa-table--borderless usa-table--striped" style="width: 100%; margin-bottom: 0;">
+            <thead>
+              <tr>
+                <th scope="col">Constituent Name</th>
+                <th scope="col">License Type</th>
+                <th scope="col">License Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span id="rel-sup-lic-name"></span></td>
+                <td><span id="rel-sup-lic-type"></span></td>
+                <td><span id="rel-sup-lic-number"></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Account layout -->
+        <div id="rel-layout-account" hidden style="margin-bottom: 2rem;">
+          <div style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
+            <span>Superior:</span>
+            <span><strong id="rel-sup-acct-name"></strong></span>
+            <span>Subordinate:</span>
+            <span>Sarah Johnson &mdash; General Contractor License (No. 00000004)</span>
+          </div>
         </div>
 
         <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
@@ -515,15 +527,6 @@
       });
     });
 
-    // Account search: Search By toggle
-    document.querySelectorAll('input[name="acct-search-by"]').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        document.getElementById('acct-search-fields-name').hidden    = this.value !== 'name';
-        document.getElementById('acct-search-fields-address').hidden = this.value !== 'address';
-        document.getElementById('affiliation-search-results').hidden = true;
-      });
-    });
-
     // Search button — show static results
     document.getElementById('affiliation-search-btn').addEventListener('click', function() {
       document.getElementById('affiliation-search-results').hidden = false;
@@ -534,9 +537,11 @@
       // License fields
       document.getElementById('search-constituent-name').value = '';
       document.getElementById('search-license-number').value = '';
-      document.getElementById('search-license-status').value = '';
-      document.getElementById('search-start-date').value = '';
-      document.getElementById('search-expiration-date').value = '';
+      document.getElementById('lic-search-address1').value = '';
+      document.getElementById('lic-search-address2').value = '';
+      document.getElementById('lic-search-city').value = '';
+      document.getElementById('lic-search-state').value = '';
+      document.getElementById('lic-search-zip').value = '';
       // Account fields
       document.getElementById('acct-search-constituent-name').value = '';
       document.getElementById('acct-search-address1').value = '';
@@ -544,9 +549,6 @@
       document.getElementById('acct-search-city').value = '';
       document.getElementById('acct-search-state').value = '';
       document.getElementById('acct-search-zip').value = '';
-      document.getElementById('acct-search-by-name').checked = true;
-      document.getElementById('acct-search-fields-name').hidden = false;
-      document.getElementById('acct-search-fields-address').hidden = true;
       document.getElementById('affiliation-search-results').hidden = true;
     });
 
@@ -559,14 +561,17 @@
       var affType = document.querySelector('input[name="affiliation-type"]:checked');
       var isLicense = affType && affType.value === 'license';
 
-      document.getElementById('rel-superior-license').hidden = !isLicense;
-      document.getElementById('rel-superior-account').hidden = isLicense;
+      document.getElementById('rel-layout-license').hidden = !isLicense;
+      document.getElementById('rel-layout-account').hidden = isLicense;
 
       if (isLicense) {
-        document.getElementById('rel-superior-license-name').textContent = btn.dataset.name;
-        document.getElementById('rel-superior-license-number').textContent = btn.dataset.licenseNumber;
+        document.getElementById('rel-sup-lic-name').textContent = btn.dataset.name;
+        document.getElementById('rel-sup-lic-number').textContent = btn.dataset.licenseNumber;
+        var licTypeEl = document.getElementById('superior-license-type');
+        var licTypeText = licTypeEl.options[licTypeEl.selectedIndex].value ? licTypeEl.options[licTypeEl.selectedIndex].text : '—';
+        document.getElementById('rel-sup-lic-type').textContent = licTypeText;
       } else {
-        document.getElementById('rel-superior-account-name').textContent = btn.dataset.name;
+        document.getElementById('rel-sup-acct-name').textContent = btn.dataset.name;
       }
 
       document.getElementById('relationship-modal').removeAttribute('hidden');
