@@ -336,7 +336,7 @@
                 <td>03/15/2021</td>
                 <td>03/14/2026</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Margaret L. Thornton">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Margaret L. Thornton" data-license-number="00000021">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -348,7 +348,7 @@
                 <td>07/01/2022</td>
                 <td>06/30/2027</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="David R. Castillo">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="David R. Castillo" data-license-number="00000034">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -360,7 +360,7 @@
                 <td>01/10/2020</td>
                 <td>01/09/2025</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Thornton &amp; Associates LLC">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Thornton &amp; Associates LLC" data-license-number="00000047">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -372,7 +372,7 @@
                 <td>11/20/2023</td>
                 <td>11/19/2028</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Patricia A. Nguyen">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Patricia A. Nguyen" data-license-number="00000058">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -384,7 +384,7 @@
                 <td>05/05/2022</td>
                 <td>05/04/2027</td>
                 <td style="white-space: nowrap;">
-                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc.">
+                  <a href="#" class="icon-button aff-add-btn" aria-label="Add Affiliation" data-name="Blue Ridge Contracting Inc." data-license-number="00000062">
                     <img src="assets/add-affiliation.png" alt="" width="30" height="30">
                   </a>
                 </td>
@@ -476,8 +476,19 @@
         <p style="font-size: 1.6rem; margin-bottom: 1.5rem;"><strong>License Name:</strong> General Contractor License</p>
 
         <div style="display: grid; grid-template-columns: 11rem 1fr; gap: 0.4rem 1rem; font-size: 1.6rem; line-height: 1.5;">
-          <span>Superior:</span><span><strong id="rel-name-superior"></strong></span>
-          <span>Subordinate:</span><span>Sarah Johnson</span>
+          <span>Superior:</span>
+          <span>
+            <!-- License superior -->
+            <span id="rel-superior-license" hidden>
+              <strong id="rel-superior-license-name"></strong> &mdash; License No. <span id="rel-superior-license-number"></span>
+            </span>
+            <!-- Account superior -->
+            <span id="rel-superior-account" hidden>
+              <strong id="rel-superior-account-name"></strong>
+            </span>
+          </span>
+          <span>Subordinate:</span>
+          <span>Sarah Johnson &mdash; General Contractor License (No. 00000004)</span>
         </div>
 
         <div class="modal-footer" style="padding-left: 0; margin-top: 2rem;">
@@ -544,7 +555,20 @@
       const btn = e.target.closest('.aff-add-btn');
       if (!btn) return;
       e.preventDefault();
-      document.getElementById('rel-name-superior').textContent = btn.dataset.name;
+
+      var affType = document.querySelector('input[name="affiliation-type"]:checked');
+      var isLicense = affType && affType.value === 'license';
+
+      document.getElementById('rel-superior-license').hidden = !isLicense;
+      document.getElementById('rel-superior-account').hidden = isLicense;
+
+      if (isLicense) {
+        document.getElementById('rel-superior-license-name').textContent = btn.dataset.name;
+        document.getElementById('rel-superior-license-number').textContent = btn.dataset.licenseNumber;
+      } else {
+        document.getElementById('rel-superior-account-name').textContent = btn.dataset.name;
+      }
+
       document.getElementById('relationship-modal').removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
     });
